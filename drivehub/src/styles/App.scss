@@ -1,5 +1,10 @@
+@import './variables';
+
 .App {
   text-align: center;
+  background-color: $background-color;
+  color: $text-color;
+  padding: $block-padding;
 }
 
 
