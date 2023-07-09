@@ -1,0 +1,81 @@
+@import '../../styles/variables';
+
+.header {
+  color: $nav-textcolor;
+  background-color: $nav-background;
+  height: 5rem;
+  display: flex;
+}
+
+// LEFT HEADER
+
+.leftheader {
+  width: 30%;
+  display: flex;
+  float: left;
+  align-items: center;
+  margin-left: 2rem;
+}
+
+.logo {
+  margin-right: 1rem;
+}
+
+.brand {
+  font-size: 2rem
+}
+
+//RIGHT HEADER
+
+.rightheader {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 2rem;
+  
+
+}
+
+
+.navlink {
+  color: $nav-textcolor;
+  font-size: $nav-textsize;
+  text-decoration: none;
+  margin: $nav-margin;
+  font-weight: $nav-weight;
+  position: relative;
+
+&::before {
+           transition: 300ms;
+           height: 5px;
+           content: "";
+           position: absolute;
+           background-color: $hover-line;
+           width: 0%;
+           bottom: -5px;
+           left: 0;
+        }
+
+        &:hover::before{
+          width: 100%;
+        }
+
+        }
+
+
+
+.navlink.active {
+  color: $hover-line;
+}
+
+.logout {
+  color: $nav-textcolor;
+  font-size: $nav-textsize;
+  margin: $nav-margin;
+  font-weight: $nav-weight;
+  background-color: $button-color-logout;
+  border: $button-border;
+  border-radius: $button-radius;
+  padding: $buton-padding;
+}
