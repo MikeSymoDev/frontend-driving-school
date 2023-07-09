@@ -7,11 +7,15 @@ import DriverProfile from './pages/driverProfile';
 import SignUpForm from './pages/signUpForm';
 import SignUpStart from './pages/signUpStart';
 import StudentProfile from './pages/studentProfile';
+import Login from './pages/login';
+import Header from './components/header/header';
 
 function App() {
   return (
     <>
       <BrowserRouter>
+
+        <Header />
       <div className="App">
         <Routes>
           <Route path='/' element={<Home />} />
@@ -21,7 +25,9 @@ function App() {
           <Route path='signup' element={<SignUpStart />} />
           <Route path='signupform' element={<SignUpForm />} />
           <Route path='studentprofile' element={<StudentProfile />} />
+          <Route path='login' element={<Login />} />
 
+{/* Driver Profile and Student Profile needs to be RequireAuth */}
 
         </Routes>
         
