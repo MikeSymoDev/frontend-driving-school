@@ -20,7 +20,7 @@
 // LEFT HEADER
 
 .leftheader {
-  width: 30%;
+  width: 20%;
   display: flex;
   float: left;
   align-items: center;
@@ -31,14 +31,10 @@
   margin-right: 1rem;
 }
 
-.brand {
-  font-size: 2rem
-}
-
 //RIGHT HEADER
 
 .rightheader {
-  width: 70%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: flex-end;

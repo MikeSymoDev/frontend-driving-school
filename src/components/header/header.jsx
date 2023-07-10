@@ -1,5 +1,6 @@
 import React from 'react';
-import { BsCarFront } from 'react-icons/bs';
+// import { BsCarFront } from 'react-icons/bs';
+import LogoWhite from '../../assets/logos/logo_dh_whitenew.png';
 import { NavLink } from 'react-router-dom';
 import './header.scss';
 
@@ -13,10 +14,10 @@ export default function Header() {
       <div className="header">
         <div className="leftheader">
           <div className="logo">
-            <BsCarFront size={30} />
+            {/* <BsCarFront size={30} /> */}
+              <img src={LogoWhite} alt='Drive Hub Logo' style={{ width: '7rem', height: 'auto' }} />
           </div>
 
-          <div className="brand">DriveHub</div>
         </div>
         <div className="rightheader">
           <div className="navigation">
