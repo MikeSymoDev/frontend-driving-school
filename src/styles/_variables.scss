@@ -7,11 +7,12 @@ $text-color: #440381;
 // Navigation
 
 $nav-background: #440381;
-$nav-textcolor: #ffffff;
-$hover-line: #F1D302;
-$nav-textsize: 1.25rem;
-$nav-margin: 0rem 1.25rem;
 
+$nav-textcolor: #ffffff;
+// $hover-line: #F1D302;
+$nav-textsize: 1.25rem;
+$hover-line: #ed9b1c;
+$nav-margin: 0rem 1.25rem;
 $nav-weight: 800;
 
 
@@ -23,7 +24,18 @@ $button-color: #4DA167;
 $button-color-logout: #bb1e10;
 $button-border: 0;
 $buton-padding: 0.75rem;
-$button-radius: 0.5rem;
+$button-radius: 1.5rem;
+
+// --- herobutton --- //
+
+$button-hero-text: #ffffff;
+$button-hero-color: #440381;
+$button-textsize: 1.25rem;
+
+
+// Hero
+
+$hero-textcolor: #ffffff;
 
 
 
