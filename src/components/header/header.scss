@@ -1,24 +1,19 @@
 @import '../../styles/variables';
 @import '../../styles/breakpoints';
 
-
-
 .header {
-  
-    color: $nav-textcolor;
-    background-color: chocolate;
-    height: 5rem;
-    display: flex;
-    position: -webkit-sticky;
-	position: sticky;
-	top: 0;
-
+  color: $nav-textcolor;
+  background-color: chocolate;
+  height: 5rem;
+  display: flex;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 
   @include sm {
-   background-color: $nav-background;
-  } 
-  
-
+    background: $gradient;
+  }
 }
 
 // LEFT HEADER
@@ -35,7 +30,7 @@
   margin-right: 1rem;
 }
 
-//RIGHT HEADER
+// RIGHT HEADER
 
 .rightheader {
   width: 80%;
@@ -43,10 +38,7 @@
   align-items: center;
   justify-content: flex-end;
   margin-right: 2rem;
-  
-
 }
-
 
 .navlink {
   color: $nav-textcolor;
@@ -56,42 +48,38 @@
   font-weight: $nav-weight;
   position: relative;
 
-&::before {
-           transition: 300ms;
-           height: 5px;
-           content: "";
-           position: absolute;
-           background-color: $hover-line;
-           width: 0%;
-           bottom: -5px;
-           left: 0;
-        }
+  &::before {
+    transition: 300ms;
+    height: 5px;
+    content: "";
+    position: absolute;
+    background-color: $hover-line;
+    width: 0%;
+    bottom: -5px;
+    left: 0;
+  }
 
-        &:hover::before{
-          width: 100%;
-        }
-
-        }
-
-
+  &:hover::before {
+    width: 100%;
+  }
+}
 
 .navlink.active {
   color: $hover-line;
 }
 
 .logout {
-
-    color: $nav-textcolor;
-    font-size: $nav-textsize;
-    background-color: $nav-background;
-    border: $button-border;
-    border-radius: $button-radius;
-    font-weight: $nav-weight;
+  color: $nav-textcolor;
+  font-size: $nav-textsize;
+  background-color: $nav-background;
+  border: $button-border;
+  border-radius: $button-radius;
+  font-weight: $nav-weight;
+  cursor: pointer;
 
   @include sm {
-  
-  margin: $nav-margin;
-  padding: $buton-padding;
+    margin: $nav-margin;
+    padding: $buton-padding;
   }
 }
 
