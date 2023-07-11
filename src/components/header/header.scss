@@ -9,6 +9,10 @@
     background-color: chocolate;
     height: 5rem;
     display: flex;
+    position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+
 
   @include sm {
    background-color: $nav-background;
@@ -89,4 +93,8 @@
   margin: $nav-margin;
   padding: $buton-padding;
   }
+}
+
+.headerdivider {
+  height: 0.25rem;
 }
