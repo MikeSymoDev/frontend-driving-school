@@ -1,0 +1,37 @@
+@import '../../styles/variables';
+@import '../../styles/breakpoints';
+
+.cta {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 8rem;
+
+  .textalign {
+    max-width: 35rem;
+  }
+
+  button {
+    background: $gradient;
+    border: $button-border;
+    padding: $buton-padding;
+    border-radius: $button-radius;
+    font-weight: $button-weight;
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+    color: $button-hero-text;
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    margin-bottom: 3rem;
+  }
+}
