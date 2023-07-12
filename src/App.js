@@ -9,6 +9,7 @@ import SignUpStart from './pages/signUpStart';
 import StudentProfile from './pages/studentProfile';
 import Login from './pages/login';
 import Header from './components/header/header';
+import Footer from './components/footer/footer';
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
         </Routes>
         
       </div>
+
+      <Footer />
       
       </BrowserRouter>
       
