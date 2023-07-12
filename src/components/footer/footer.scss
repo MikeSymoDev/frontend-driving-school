@@ -1,0 +1,26 @@
+@import '../../styles/variables';
+@import '../../styles/breakpoints';
+
+.footer {
+  color: $nav-textcolor;
+  background: $gradient;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+  }
+
+  .social {
+    display: flex;
+    align-items: center;
+    margin: 2rem;
+
+    .icon {
+      margin-right: 1rem;
+    }
+  }
+}
