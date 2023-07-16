@@ -15,6 +15,24 @@ const setUpUser = createAsyncThunk (
     }
 )
 
+
+const loginUser = createAsyncThunk(
+    "user/login", async (payload) => {
+        const response = await axiosInstance.post("/token/", payload);
+        const userData = {...response.data};
+        const id = userData.user.id;
+        const token = userData.access;
+        const userName = userData.user.username;
+        const firstname = userData.user.first_name;
+        const lastname = userData.user.last_name;
+        const amountLikes = userData.user.amount_of_likes
+        const userState = {id, token, userName, firstname, lastname, amountLikes};
+        localStorage.setItem("currentUser", JSON.stringify(userState))
+        return userState;
+    }
+)
+
+
 export const currentUserSlice = createSlice({
     name: 'currentUserSlice',
     initialState: {
@@ -34,5 +52,5 @@ export const currentUserSlice = createSlice({
     }
 })
 
-export { signUpUser, setUpUser }
+export { signUpUser, setUpUser, loginUser }
 export default currentUserSlice.reducer

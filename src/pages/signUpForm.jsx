@@ -31,7 +31,7 @@ export default function SignUpForm() {
   const [username, setUserName] = useState("")
   const [firstname, setFirstName] = useState("")
   const [lastname, setLastName] = useState("")
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState("");
   const [passwordrepeat, setPasswordrepeat] = useState();
 
   const signUpData = {
@@ -105,7 +105,7 @@ export default function SignUpForm() {
     e.preventDefault();
     console.log(setupData)
     dispatcher(setUpUser(setupData))
-    navigate('login')
+    navigate('/login')
 
   }
 
@@ -122,7 +122,7 @@ export default function SignUpForm() {
             <div>
                 <form onSubmit = {(e) => signUpHandler(e)} className='SignUp-Form'>
                   <label>Email:</label>
-                  <input type="text" className='Signup-Form-Email' placeholder="Email"  onChange={(e)=>{setEmail(e.target.value)}} />
+                  <input type="email" className='Signup-Form-Email' placeholder="Email"  onChange={(e)=>{setEmail(e.target.value)}} />
                   <label>Username:</label>
                   <input type="text" className='Signup-Form-Username' placeholder="Username"  onChange={(e)=>{setUserName(e.target.value)}} />
                   <label>First Name:</label>
