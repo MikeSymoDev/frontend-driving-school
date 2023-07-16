@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { setUpUser, signUpUser } from '../app/slices/currentUserSlice';
+import { fetchDrivingSchools } from '../app/slices/drivingSchoolSlice';
 
 export default function SignUpForm() {
-  const dispatcher = useDispatch()
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation();
   const signUpState = useSelector((store) => store.currentUser)
+  
+  useEffect(() => {
+    dispatch(fetchDrivingSchools());
+  }, [dispatch, fetchDrivingSchools]);
 
 
   
@@ -24,6 +29,16 @@ export default function SignUpForm() {
     userTypeLong = "Instructor"
   }
 
+  // Fetch the DrivingSchools
+  const drivingSchoolState = useSelector((store) => store.drivingSchools)
+  const drivingSchools = drivingSchoolState.data
+
+  
+  if (userType === 'I') {
+
+  }
+
+  console.log(drivingSchools)
 
 
   // THIS PART IS FOR SIGNUP THE PROFILE
@@ -44,10 +59,11 @@ export default function SignUpForm() {
 
   }
   
+  
   const signUpHandler = async (e) => {
     e.preventDefault();
     console.log (signUpData)
-    dispatcher(signUpUser( signUpData) )
+    dispatch(signUpUser( signUpData) )
 }
 
 
@@ -101,10 +117,11 @@ export default function SignUpForm() {
   console.log(gender)
   console.log(userType)
   console.log(hasLearnerPermit)
+  console.log(drivingSchool)
   const setupHandler = async (e) => {
     e.preventDefault();
     console.log(setupData)
-    dispatcher(setUpUser(setupData))
+    dispatch(setUpUser(setupData))
     navigate('/login')
 
   }
@@ -177,6 +194,14 @@ export default function SignUpForm() {
                  {userType == "S" && <input type="checkbox" required checked={hasLearnerPermit} onChange={(e)=>{setHasLearnerPermit(e.target.checked)}}></input>}
                  <label>Phone</label>
                  <input type="tel" required className='Setup-Form-Phone' placeholder="Phone"  onChange={(e)=>{setPhone(e.target.value)}} />
+                 {userType == "I" && <label>Driving School</label>}
+                 {userType == "I" && <select onChange={(e)=>{setDrivingSchool(e.target.value)}}>
+                  {drivingSchools.map((option) => (
+                      <option key={option.id} value={option.id}>
+                     {option.companyName}
+                       </option>
+                  ))}
+                 </select>}
                  <input type="submit" value="Setup Profile" />
               </form>
            </div>
