@@ -17,8 +17,8 @@ export default function SignUpStart() {
             It depends for what reasons you are here: <br></br>
             Would you like to learn or would you like to teach?
           </p>
-          <button onClick={() => handleUserType('Student')}>STUDENT</button>
-          <button onClick={() => handleUserType('Instructor')}>INSTRUCTOR</button>
+          <button onClick={() => handleUserType('S')}>STUDENT</button>
+          <button onClick={() => handleUserType('I')}>INSTRUCTOR</button>
         </div>
       </div>
     </>

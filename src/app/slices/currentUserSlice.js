@@ -2,10 +2,15 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance from '../../axios';
 
 const signUpUser = createAsyncThunk (
-    "user/validation", async (payload) => {
+    "user/signup", async (payload) => {
         const response = await axiosInstance.post("/signup/", payload)
-        //const userData = {...response.data};
+        return response;
+    }
+)
 
+const setUpUser = createAsyncThunk (
+    "user/setup", async (payload) => {
+        const response = await axiosInstance.patch("/user/setup/", payload)
         return response;
     }
 )
@@ -29,5 +34,5 @@ export const currentUserSlice = createSlice({
     }
 })
 
-export { signUpUser }
+export { signUpUser, setUpUser }
 export default currentUserSlice.reducer
