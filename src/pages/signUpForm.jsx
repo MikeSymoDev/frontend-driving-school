@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useParams } from 'react-router-dom';
-import { signUpUser } from '../app/slices/currentUserSlice';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { setUpUser, signUpUser } from '../app/slices/currentUserSlice';
 
 export default function SignUpForm() {
   const dispatcher = useDispatch()
+  const navigate = useNavigate()
   const location = useLocation();
   const signUpState = useSelector((store) => store.currentUser)
 
@@ -14,12 +15,18 @@ export default function SignUpForm() {
   console.log(userType)
 
   let signUpMessage;
-  if (userType === 'Student') {
+  let userTypeLong;
+  if (userType === 'S') {
     signUpMessage = 'Sign Up as a Student';
-  } else if (userType === 'Instructor') {
+    userTypeLong = "Student"
+  } else if (userType === 'I') {
     signUpMessage = 'Sign Up as an Instructor';
+    userTypeLong = "Instructor"
   }
 
+
+
+  // THIS PART IS FOR SIGNUP THE PROFILE
   const [email, setEmail] = useState("");
   const [username, setUserName] = useState("")
   const [firstname, setFirstName] = useState("")
@@ -41,19 +48,74 @@ export default function SignUpForm() {
     e.preventDefault();
     console.log (signUpData)
     dispatcher(signUpUser( signUpData) )
-    
-    // dispatcher(validateUser( validateData ))     
-    // navigate("/") 
-}  
+}
+
+
+  // THIS PART IS FOR SETUP THE PROFILE
+  const GENDER_OPTIONS = [
+    { value: 'M', label: 'Male' },
+    { value: 'F', label: 'Female' },
+    { value: 'N', label: 'Non-Binary' }
+  ];
+
+  const COUNTRY_OPTIONS = [
+    { value: 'CH', label: 'Switzerland' },
+    { value: 'DE', label: 'Germany' },
+    { value: 'FR', label: 'France' },
+    { value: 'IT', label: 'Italy' }
+  ];
+
+
+
+  const [gender, setGender] = useState('M');
+  const [address, setAddress] = useState('')
+  const [postalCode, setPostalCode] = useState('')
+  const [locationCity, setLocationCity] = useState('')
+  const [country, setCountry] = useState('CH')
+  const [about, setAbout] = useState('')
+  const [profileImage, setProfileImage] = useState('')
+  const [instructorLicense, setInstructorLicense] = useState('')
+  const [hasLearnerPermit, setHasLearnerPermit] = useState(false)
+  const [phone, setPhone] = useState('')
+  const [drivingSchool, setDrivingSchool] = useState(null)
+
+
+
+  
+  const setupData = {
+    email: email,
+    gender: gender,
+    type: userType,
+    address: address,
+    postal_code: postalCode,
+    location_city: locationCity,
+    country: country,
+    about: about,
+    profile_image: profileImage,
+    instructor_license: instructorLicense,
+    has_learner_permit: hasLearnerPermit,
+    phone: phone,
+    driving_school: drivingSchool
+  }
+
+  console.log(gender)
+  console.log(userType)
+  console.log(hasLearnerPermit)
+  const setupHandler = async (e) => {
+    e.preventDefault();
+    console.log(setupData)
+    dispatcher(setUpUser(setupData))
+    navigate('login')
+
+  }
 
   return (
     <>
         <div className="cta">
         <div className="textalign">
-        {signUpState.signedUp ? (<h2>YOU ARE SIGNED UP</h2>
-        ):(
-           <>
-            <h2>{signUpMessage}</h2>
+        {!signUpState.signedUp ? (
+          <>
+             <h2>{signUpMessage}</h2>
             <p>
               Please fill out the form
             </p>
@@ -74,6 +136,50 @@ export default function SignUpForm() {
                   <input type="submit" value="Sign Up" />
                 </form>
             </div>
+          </>
+        ):(
+           <>
+            <h2>Setup your {userTypeLong} profile</h2>
+            <p>
+              Please fill out the form
+            </p>
+           <div>
+              <form onSubmit = {(e) => setupHandler(e)} className='SetUp-Form'>
+                  <label>Gender:</label>
+                  <select required className='Setup-Form-Gender' onChange={(e)=>{setGender(e.target.value)}}>
+                    {GENDER_OPTIONS.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                 </select>
+                 <label>Address</label>
+                 <input type="text" required className='Setup-Form-Address' placeholder="Address" value={address} onChange={(e)=>{setAddress(e.target.value)}} />
+                 <label>Postal Code</label>
+                 <input type="text" required className='Setup-Form-PostalCode' placeholder='Postal Code' value={postalCode} pattern="[0-9]{4,5}" onChange={(e)=>{setPostalCode(e.target.value)}}></input>
+                 <label>Location</label>
+                 <input type="text" required className='Setup-Form-Location' placeholder="Location" value={locationCity} onChange={(e)=>{setLocationCity(e.target.value)}} />
+                 <label>Country:</label>
+                 <select required className='Setup-Form-Country' onChange={(e)=>{setCountry(e.target.value)}}>
+                    {COUNTRY_OPTIONS.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                 </select>
+                 <label>About you</label>
+                 <textarea rows="4" cols="50" placeholder="Tell us about you" onChange={(e)=>{setAbout(e.target.value)}}></textarea>
+                 <label>Profile Picture</label>
+                 <input type="file" id="profileImage" name="profileImage" acceptLanguage="en" accept="image/*" onChange={(e)=>{setProfileImage(e.target.value)}}/>
+                 {userType == "I" && <label>Instructor License</label>}
+                 {userType == "I" && <input type="text" required className='Setup-Form-License' placeholder="Instructor License"  onChange={(e)=>{setInstructorLicense(e.target.value)}} />}
+                 {userType == "S" && <label>Learner Permit</label>}
+                 {userType == "S" && <input type="checkbox" required checked={hasLearnerPermit} onChange={(e)=>{setHasLearnerPermit(e.target.checked)}}></input>}
+                 <label>Phone</label>
+                 <input type="tel" required className='Setup-Form-Phone' placeholder="Phone"  onChange={(e)=>{setPhone(e.target.value)}} />
+                 <input type="submit" value="Setup Profile" />
+              </form>
+           </div>
            </>
         )}
          
