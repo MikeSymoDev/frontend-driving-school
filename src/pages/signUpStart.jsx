@@ -1,7 +1,26 @@
 import React from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 export default function SignUpStart() {
+
+  const navigate = useNavigate()
+
+  const handleUserType = (userType) => {
+    navigate('/signupform', { state: { userType } });
+  }
   return (
-    <div>Choose to sign up either as a driver or a student</div>
+    <>
+        <div className="cta">
+        <div className="textalign">
+          <h2>What Type are you?</h2>
+          <p>
+            It depends for what reasons you are here: <br></br>
+            Would you like to learn or would you like to teach?
+          </p>
+          <button onClick={() => handleUserType('S')}>STUDENT</button>
+          <button onClick={() => handleUserType('I')}>INSTRUCTOR</button>
+        </div>
+      </div>
+    </>
   )
 }
