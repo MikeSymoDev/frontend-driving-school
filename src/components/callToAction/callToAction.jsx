@@ -9,7 +9,7 @@ export default function CallToAction() {
     <>
       <div className="cta">
         <div className="textalign">
-          <h2>Ready To Start</h2>
+          <h2>READY TO START</h2>
           <p>
             Here is the Beginning of your driving adventure. It will be so
             awesome, that you actually have to think about, if you should start

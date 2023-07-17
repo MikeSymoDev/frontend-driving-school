@@ -1,0 +1,42 @@
+
+.drivertitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  margin-bottom: 4rem;
+
+  p {
+    max-width: 50rem;
+  }
+}
+
+.drivers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.driverdetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-top: 1rem;
+
+  h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    max-width: 12rem;
+    text-align: center;
+  }
+
+ 
+
+}
