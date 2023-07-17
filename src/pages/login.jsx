@@ -22,13 +22,19 @@ export default function Login() {
       <div className="textalign">
         <h2>Login to BOOK. LEARN. DRIVE.</h2>
         <p>Please enter your Email and Password</p>
-        <div>
+        <div className='Sign-Setup-Login-Form-Div'>
           <form className='Login-Form'>
-            <label>Email</label>
-            <input type="email" className='Login-Form-Email' placeholder="Email"  onChange={(e)=>{setEmailLogin(e.target.value)}} />
-            <label>Password</label>
-            <input type="password" className='Login-Form-Password' placeholder="Password"  onChange={(e)=>{setPasswordLogin(e.target.value)}} />
-            <input type="submit" value="Login" />
+            <div className='Sign-Setup-Login-Form-Element'>
+              <label>Email</label>
+              <input type="email" className='Sign-Setup-Login-Form-Input' placeholder="Email"  onChange={(e)=>{setEmailLogin(e.target.value)}} />
+            </div>
+            <div className='Sign-Setup-Login-Form-Element'>
+              <label>Password</label>
+              <input type="password" className='Sign-Setup-Login-Form-Input' placeholder="Password"  onChange={(e)=>{setPasswordLogin(e.target.value)}} />
+            </div>
+            <div>
+                    <input className= "submit" type="submit" value="LOGIN" />
+            </div>
           </form>
         </div>
       </div>
