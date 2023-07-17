@@ -1,7 +1,23 @@
-import React from 'react'
+import React from 'react';
+import './driverDetail.scss';
+import HeroDriverDetail from '../components/heroDriverDetail/heroDriverDetail';
+import DriverDetailComponent from '../components/driverDetailComponent/driverDetailComponent';
 
 export default function DriverDetail() {
   return (
-    <div>Detail of a Driver</div>
+    <>
+    
+    <div className='herodetail'>
+   <HeroDriverDetail />
+
+    </div>
+ 
+    <div className='driverdetailcomp'>
+    <DriverDetailComponent />
+
+    </div>
+
+    
+    </>
   )
 }
