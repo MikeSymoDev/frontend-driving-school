@@ -1,0 +1,61 @@
+@import '../styles/variables';
+
+.Sign-Setup-Login-Form-Div {
+
+
+    width: 35rem;
+
+    .Sign-Setup-Login-Form-Element {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+    
+        .Sign-Setup-Login-Form-Input {
+    
+            height: 2.1rem;
+            width: 17rem;
+            border: 1px solid black;
+            font-size: 1rem;
+            padding-left: 0.5rem;
+            border-radius: 0.5rem;
+    
+        }
+    
+        .Sign-Setup-Login-Form-DropDown {
+            
+            height: 2.5rem;
+            width: 17.8rem;
+            border: 1px solid black;
+            font-size: 0.85rem;
+            padding-left: 0.5rem;
+            border-radius: 0.5rem;
+        }
+    
+        .Sign-Setup-Login-Form-TextArea {
+    
+            height: 6.1rem;
+            width: 17rem;
+            border: 1px solid black;
+            font-size: 1rem;
+            padding-left: 0.5rem;
+            border-radius: 0.5rem;
+    
+        }
+    
+    }
+    
+    .submit {
+        margin-top: 2rem;
+        background: $gradient;
+        border: $button-border;
+        padding: $buton-padding;
+        border-radius: $button-radius;
+        color: white;
+        font-weight: $button-weight;
+        font-size: 1.25rem;
+        cursor: pointer;
+    }
+    
+    
+}

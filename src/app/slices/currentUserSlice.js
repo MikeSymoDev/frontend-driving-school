@@ -1,19 +1,23 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance from '../../axios';
 
-const signUpUser = createAsyncThunk (
-    "user/signup", async (payload) => {
-        const response = await axiosInstance.post("/signup/", payload)
-        return response;
+const signUpUser = createAsyncThunk("user/signup", async (payload) => {
+    try {
+      const response = await axiosInstance.post("/signup/", payload);
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
     }
-)
+  });
 
-const setUpUser = createAsyncThunk (
-    "user/setup", async (payload) => {
-        const response = await axiosInstance.patch("/user/setup/", payload)
-        return response;
+  const setUpUser = createAsyncThunk("user/setup", async (payload) => {
+    try {
+      const response = await axiosInstance.patch("/user/setup/", payload);
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
     }
-)
+  });
 
 
 const loginUser = createAsyncThunk(
@@ -46,10 +50,11 @@ const loginUser = createAsyncThunk(
 
 
 export const currentUserSlice = createSlice({
-    name: 'currentUserSlice',
+    name: 'currentUser',
     initialState: {
 
-        signedUp: false
+        signedUp: false,
+        error: null,
 
     },
     reducers: {
@@ -60,7 +65,14 @@ export const currentUserSlice = createSlice({
         [signUpUser.fulfilled]: (state) => {
             console.log("User is Signed Up")
             state.signedUp = true
-        }
+            state.error = null
+        },
+
+        [signUpUser.rejected]: (state, action) => {
+            state.error = action.error.message;
+        },
+
+
     }
 })
 
