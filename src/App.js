@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='alldrivers' element={<DriverOverview />} />
-          <Route path='driverdetail' element={<DriverDetail />} />
+          <Route path='driverdetail/:id' element={<DriverDetail />} />
           <Route path='driverprofile' element={<DriverProfile />} />
           <Route path='signup' element={<SignUpStart />} />
           <Route path='signupform' element={<SignUpForm />} />

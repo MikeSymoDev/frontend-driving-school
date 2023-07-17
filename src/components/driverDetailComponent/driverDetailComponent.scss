@@ -1,0 +1,41 @@
+@import '../../styles/variables';
+@import '../../styles/breakpoints';
+
+.driverinfo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.drivertext {
+  margin-left: 5rem;
+}
+
+.drivingschool {
+  background-color: $component-background;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.driver-card {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.drivingschooltext {
+margin-right: 5rem;
+display: flex;
+flex-direction: column;
+
+h3 {
+  margin-bottom: 2rem;
+}
+}
+
+.carimage {
+  display: flex;
+}

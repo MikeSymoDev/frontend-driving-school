@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axiosInstance from '../../axios';
+import { NavLink } from 'react-router-dom';
 import './threeDrivers.scss';
 
 export default function ThreeDrivers() {
@@ -41,11 +42,18 @@ export default function ThreeDrivers() {
         <div className="drivers">
           {randomDrivers.slice(0, 3).map((driver) => (
             <div className="driverdetails" key={driver.id}>
-              <img
-                src={driver.profile_image}
-                alt="drivers"
-                style={{ width: '200px', height: '200px', borderRadius: '50%' }}
-              />
+              <NavLink to={`driverDetail/${driver.id}`}>
+                <img
+                  src={driver.profile_image}
+                  alt="drivers"
+                  style={{
+                    width: '200px',
+                    height: '200px',
+                    borderRadius: '50%',
+                  }}
+                />
+              </NavLink>
+
               <h3>
                 {driver.user.first_name} {driver.user.last_name}
               </h3>
