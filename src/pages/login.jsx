@@ -9,7 +9,7 @@ export default function Login() {
   const navigate = useNavigate
 
   const [emailLogin, setEmailLogin] = useState('harryhirsch@wowds.com')
-  const [passwordLogin, setPasswordLogin] = useState('Securepw12')
+  const [passwordLogin, setPasswordLogin] = useState('Secure')
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState();
 
