@@ -17,7 +17,7 @@ export default function SignUpForm() {
 
   
   const { userType } = location.state;
-  console.log(userType)
+  // console.log(userType)
 
   let signUpMessage;
   let userTypeLong;
@@ -187,7 +187,7 @@ export default function SignUpForm() {
                  <label>About you</label>
                  <textarea rows="4" cols="50" placeholder="Tell us about you" onChange={(e)=>{setAbout(e.target.value)}}></textarea>
                  <label>Profile Picture</label>
-                 <input type="file" id="profileImage" name="profileImage" acceptLanguage="en" accept="image/*" onChange={(e)=>{setProfileImage(e.target.value)}}/>
+                 <input type="file" id="profileImage" name="profileImage" acceptLanguage="en" accept="image/*" onChange={(e)=>{setProfileImage(URL.createObjectURL(e.target.files[0]))}}/>
                  {userType == "I" && <label>Instructor License</label>}
                  {userType == "I" && <input type="text" required className='Setup-Form-License' placeholder="Instructor License"  onChange={(e)=>{setInstructorLicense(e.target.value)}} />}
                  {userType == "S" && <label>Learner Permit</label>}
