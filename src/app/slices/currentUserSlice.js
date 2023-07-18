@@ -10,9 +10,38 @@ const signUpUser = createAsyncThunk("user/signup", async (payload) => {
     }
   });
 
-  const setUpUser = createAsyncThunk("user/setup", async (payload) => {
+//   const setUpUser = createAsyncThunk("user/setup", async (payload) => {
+//     try {
+//       const response = await axiosInstance.patch("/user/setup/", payload);
+//       return response.data;
+//     } catch (error) {
+//       throw new Error(error.response.data.message);
+//     }
+//   });
+
+const setUpUser = createAsyncThunk("user/setup", async (formData) => {
     try {
-      const response = await axiosInstance.patch("/user/setup/", payload);
+        const response = await axiosInstance.patch("user/setup/", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        });
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response.data.message);
+    }
+});
+
+  const uploadProfileImage = createAsyncThunk("user/me/edit/", async (payload) => {
+    try {
+      const formData = new FormData();
+      formData.append("profileImage", payload); // Assuming the payload is the image file
+  
+      const response = await axiosInstance.patch("user/me/edit/", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data", // Set the Content-Type to form data only for this request
+        },
+      });
       return response.data;
     } catch (error) {
       throw new Error(error.response.data.message);
@@ -181,5 +210,5 @@ export const currentUserSlice = createSlice({
 })
 
 export const { SET_USER, DELETE_USER } = currentUserSlice.actions;
-export { signUpUser, setUpUser, loginUser }
+export { signUpUser, setUpUser, loginUser, uploadProfileImage }
 export default currentUserSlice.reducer

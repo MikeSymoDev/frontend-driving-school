@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import './signUpForm.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { setUpUser, signUpUser } from '../app/slices/currentUserSlice';
@@ -17,7 +18,7 @@ export default function SignUpForm() {
 
   
   const { userType } = location.state;
-  console.log(userType)
+  // console.log(userType)
 
   let signUpMessage;
   let userTypeLong;
@@ -38,7 +39,7 @@ export default function SignUpForm() {
 
   }
 
-  console.log(drivingSchools)
+  // console.log(drivingSchools)
 
 
   // THIS PART IS FOR SIGNUP THE PROFILE
@@ -62,8 +63,9 @@ export default function SignUpForm() {
   
   const signUpHandler = async (e) => {
     e.preventDefault();
-    console.log (signUpData)
+    // console.log (signUpData)
     dispatch(signUpUser( signUpData) )
+
 }
 
 
@@ -107,21 +109,41 @@ export default function SignUpForm() {
     location_city: locationCity,
     country: country,
     about: about,
-    profile_image: profileImage,
+    // profile_image: profileImage,
     instructor_license: instructorLicense,
     has_learner_permit: hasLearnerPermit,
     phone: phone,
     driving_school: drivingSchool
   }
 
-  console.log(gender)
-  console.log(userType)
-  console.log(hasLearnerPermit)
-  console.log(drivingSchool)
+  // console.log(gender)
+  // console.log(userType)
+  // console.log(hasLearnerPermit)
+  // console.log(drivingSchool)
   const setupHandler = async (e) => {
     e.preventDefault();
-    console.log(setupData)
-    dispatch(setUpUser(setupData))
+
+    const formData = new FormData();
+    
+    const hasLearnerPermitStr = String(hasLearnerPermit).charAt(0).toUpperCase() + String(hasLearnerPermit).slice(1);
+
+    // Append all your form data to this instance
+    formData.append('email', email);
+    formData.append('gender', gender);
+    formData.append('type', userType);
+    formData.append('address', address);
+    formData.append('postal_code', postalCode);
+    formData.append('location_city', locationCity);
+    formData.append('country', country);
+    formData.append('about', about);
+    formData.append('profile_image', profileImage); // assuming this is a File object
+    formData.append('instructor_license', instructorLicense);
+    formData.append('has_learner_permit', hasLearnerPermitStr);
+    formData.append('phone', phone);
+    formData.append('driving_school', drivingSchool);
+
+    console.log('Sending form data:', [...formData]);
+    dispatch(setUpUser(formData));
     navigate('/login')
 
   }
@@ -136,21 +158,36 @@ export default function SignUpForm() {
             <p>
               Please fill out the form
             </p>
-            <div>
-                <form onSubmit = {(e) => signUpHandler(e)} className='SignUp-Form'>
-                  <label>Email:</label>
-                  <input type="email" className='Signup-Form-Email' placeholder="Email"  onChange={(e)=>{setEmail(e.target.value)}} />
-                  <label>Username:</label>
-                  <input type="text" className='Signup-Form-Username' placeholder="Username"  onChange={(e)=>{setUserName(e.target.value)}} />
-                  <label>First Name:</label>
-                  <input type="text" className='Signup-Form-FirstName' placeholder="FirstName"  onChange={(e)=>{setFirstName(e.target.value)}} />
-                  <label>Last Name:</label>
-                  <input type="text" className='Signup-Form-LastName' placeholder="LastName"  onChange={(e)=>{setLastName(e.target.value)}} />
-                  <label>Password:</label>
-                  <input type="password" className='Signup-Form-Password' placeholder="Password"  onChange={(e)=>{setPassword(e.target.value)}} />
-                  <label>Password Repeat:</label>
-                  <input type="password" className='Signup-Form-Password-Repeat' placeholder="Password Repeat"  onChange={(e)=>{setPasswordrepeat(e.target.value)}} />
-                  <input type="submit" value="Sign Up" />
+            <div className='Sign-Setup-Login-Form-Div'>
+                <form onSubmit = {(e) => signUpHandler(e)} className='Sign-Setup-Login-Form'>
+                  <div className='Sign-Setup-Login-Form-Element'>
+                    <label>Email:</label>
+                    <input type="email" className='Sign-Setup-Login-Form-Input' placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" onChange={(e)=>{setEmail(e.target.value)}} />
+                  </div>
+                  <div className='Sign-Setup-Login-Form-Element'>
+                    <label>Username:</label>
+                    <input type="text" className='Sign-Setup-Login-Form-Input' placeholder="Username" required onChange={(e)=>{setUserName(e.target.value)}} />
+                  </div>
+                  <div className='Sign-Setup-Login-Form-Element'>
+                    <label>First Name:</label>
+                    <input type="text" className='Sign-Setup-Login-Form-Input' placeholder="First Name" required onChange={(e)=>{setFirstName(e.target.value)}} />
+                  </div>
+                  <div className='Sign-Setup-Login-Form-Element'>
+                    <label>Last Name:</label>
+                    <input type="text" className='Sign-Setup-Login-Form-Input' placeholder="Last Name" required onChange={(e)=>{setLastName(e.target.value)}} />
+                  </div>
+                  <div className='Sign-Setup-Login-Form-Element'>
+                    <label>Password:</label>
+                    <input type="password" className='Sign-Setup-Login-Form-Input' placeholder="Password" required onChange={(e)=>{setPassword(e.target.value)}} />
+                  </div>
+                  <div className='Sign-Setup-Login-Form-Element'>
+                    <label>Password Repeat:</label>
+                    <input type="password" className='Sign-Setup-Login-Form-Input' placeholder="Password Repeat" required onChange={(e)=>{setPasswordrepeat(e.target.value)}} />
+                  </div>
+                  <div>
+                    <input className= "submit" type="submit" value="SIGN UP" />
+                  </div>
+                  
                 </form>
             </div>
           </>
@@ -160,49 +197,82 @@ export default function SignUpForm() {
             <p>
               Please fill out the form
             </p>
-           <div>
+           <div className='Sign-Setup-Login-Form-Div'>
               <form onSubmit = {(e) => setupHandler(e)} className='SetUp-Form'>
+                <div className='Sign-Setup-Login-Form-Element'>
                   <label>Gender:</label>
-                  <select required className='Setup-Form-Gender' onChange={(e)=>{setGender(e.target.value)}}>
-                    {GENDER_OPTIONS.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                 </select>
-                 <label>Address</label>
-                 <input type="text" required className='Setup-Form-Address' placeholder="Address" value={address} onChange={(e)=>{setAddress(e.target.value)}} />
-                 <label>Postal Code</label>
-                 <input type="text" required className='Setup-Form-PostalCode' placeholder='Postal Code' value={postalCode} pattern="[0-9]{4,5}" onChange={(e)=>{setPostalCode(e.target.value)}}></input>
-                 <label>Location</label>
-                 <input type="text" required className='Setup-Form-Location' placeholder="Location" value={locationCity} onChange={(e)=>{setLocationCity(e.target.value)}} />
-                 <label>Country:</label>
-                 <select required className='Setup-Form-Country' onChange={(e)=>{setCountry(e.target.value)}}>
-                    {COUNTRY_OPTIONS.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                 </select>
-                 <label>About you</label>
-                 <textarea rows="4" cols="50" placeholder="Tell us about you" onChange={(e)=>{setAbout(e.target.value)}}></textarea>
-                 <label>Profile Picture</label>
-                 <input type="file" id="profileImage" name="profileImage" acceptLanguage="en" accept="image/*" onChange={(e)=>{setProfileImage(e.target.value)}}/>
-                 {userType == "I" && <label>Instructor License</label>}
-                 {userType == "I" && <input type="text" required className='Setup-Form-License' placeholder="Instructor License"  onChange={(e)=>{setInstructorLicense(e.target.value)}} />}
-                 {userType == "S" && <label>Learner Permit</label>}
-                 {userType == "S" && <input type="checkbox" required checked={hasLearnerPermit} onChange={(e)=>{setHasLearnerPermit(e.target.checked)}}></input>}
-                 <label>Phone</label>
-                 <input type="tel" required className='Setup-Form-Phone' placeholder="Phone"  onChange={(e)=>{setPhone(e.target.value)}} />
-                 {userType == "I" && <label>Driving School</label>}
-                 {userType == "I" && <select onChange={(e)=>{setDrivingSchool(e.target.value)}}>
-                  {drivingSchools.map((option) => (
-                      <option key={option.id} value={option.id}>
-                     {option.companyName}
-                       </option>
-                  ))}
-                 </select>}
-                 <input type="submit" value="Setup Profile" />
+                    <select required className='Sign-Setup-Login-Form-DropDown' onChange={(e)=>{setGender(e.target.value)}}>
+                      <option value="">Please choose</option> {/* Default option */}
+                      {GENDER_OPTIONS.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+                <div className='Sign-Setup-Login-Form-Element'>
+                  <label>Address</label>
+                  <input type="text" required className='Sign-Setup-Login-Form-Input' placeholder="Address" value={address} onChange={(e)=>{setAddress(e.target.value)}} />
+                </div>
+                <div className='Sign-Setup-Login-Form-Element'>
+                  <label>Postal Code</label>
+                  <input type="text" required className='Sign-Setup-Login-Form-Input' placeholder='Postal Code' value={postalCode} pattern="[0-9]{4,5}" onChange={(e)=>{setPostalCode(e.target.value)}}></input>
+                </div>
+                <div className='Sign-Setup-Login-Form-Element'>
+                  <label>Location</label>
+                  <input type="text" required className='Sign-Setup-Login-Form-Input' placeholder="Location" value={locationCity} onChange={(e)=>{setLocationCity(e.target.value)}} />
+                </div>
+                <div className='Sign-Setup-Login-Form-Element'>
+                  <label>Country:</label>
+                  <select required className='Sign-Setup-Login-Form-DropDown' onChange={(e)=>{setCountry(e.target.value)}}>
+                      <option value="">Please choose</option> {/* Default option */}
+                      {COUNTRY_OPTIONS.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                  </select>
+                </div >
+                <div className='Sign-Setup-Login-Form-Element'>
+                  <label>About you</label>
+                  <textarea className='Sign-Setup-Login-Form-TextArea' rows="4" cols="50" placeholder="Tell us about you" onChange={(e)=>{setAbout(e.target.value)}}></textarea>
+                </div>
+                {userType == "I" && 
+                  <div className='Sign-Setup-Login-Form-Element'>
+                    <label>Instructor License</label>
+                    <input type="text" required className='Sign-Setup-Login-Form-Input' placeholder="Instructor License"  onChange={(e)=>{setInstructorLicense(e.target.value)}} />
+                  </div>}
+                {userType == "S" && 
+                  <div className='Sign-Setup-Login-Form-Element'>
+                    <label>Learner Permit</label>
+                    <input type="checkbox" required checked={hasLearnerPermit} onChange={(e)=>{setHasLearnerPermit(e.target.checked)}}></input>
+                  </div>}
+                 <div className='Sign-Setup-Login-Form-Element'>
+                  <label>Phone</label>
+                  <input type="tel" required className='Sign-Setup-Login-Form-Input' placeholder="Phone"  onChange={(e)=>{setPhone(e.target.value)}} />
+                 </div>
+                 
+                 {userType == "I" && 
+                  <div className='Sign-Setup-Login-Form-Element'>
+                    <label>Driving School</label>
+                    <select className='Sign-Setup-Login-Form-DropDown' onChange={(e)=>{setDrivingSchool(e.target.value)}}>
+                      <option value="">Please choose</option> {/* Default option */}
+                      {drivingSchools.map((option) => (
+                        <option key={option.id} value={option.id}>
+                          {option.companyName}
+                        </option>
+                      ))}
+                    </select>
+                  </div>}
+                  <div className='Sign-Setup-Login-Form-Element'>
+                    <label>Profile Picture</label>
+                    <input type="file" id="profileImage" name="profileImage" acceptLanguage="en" accept="image/*" onChange={(e)=>{setProfileImage(e.target.files[0])}}/>
+                  </div>
+                 
+
+                  <div>
+                    <input className= "submit" type="submit" value="SETUP PROFILE" />
+                  </div>
               </form>
            </div>
            </>
