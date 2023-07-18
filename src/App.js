@@ -11,6 +11,7 @@ import Login from './pages/login';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import CallToAction from './components/callToAction/callToAction';
+import MyProfile from './pages/myProfile';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='alldrivers' element={<DriverOverview />} />
           <Route path='driverdetail/:id' element={<DriverDetail />} />
-          <Route path='driverprofile' element={<DriverProfile />} />
+          <Route path='myprofile' element={<MyProfile />} />
           <Route path='signup' element={<SignUpStart />} />
           <Route path='signupform' element={<SignUpForm />} />
           <Route path='studentprofile' element={<StudentProfile />} />

@@ -5,7 +5,7 @@ import instructorReducer from "../app/slices/instructorSlice"
 import drivingSchoolReducer from "../app/slices/drivingSchoolSlice"
 import vehicleReducer from "../app/slices/vehicleSlice"
 import vehicleImageReducer from "../app/slices/vehicleImageSlice"
-
+import myProfileReducer from "../app/slices/myProfileSlice"
 
 
 export const store = configureStore({
@@ -16,5 +16,6 @@ export const store = configureStore({
         drivingSchools: drivingSchoolReducer,
         vehicles: vehicleReducer,
         vehicleImages: vehicleImageReducer,
+        myProfile: myProfileReducer
     }
 })

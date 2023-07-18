@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../app/slices/currentUserSlice';
+import { fetchMyProfile } from '../app/slices/myProfileSlice';
+import { fetchDrivingSchools } from '../app/slices/drivingSchoolSlice';
 
 export default function Login() {
 
   const dispatcher = useDispatch()
-  const navigate = useNavigate
+  const navigate = useNavigate()
 
   const [emailLogin, setEmailLogin] = useState('harryhirsch@wowds.com')
   const [passwordLogin, setPasswordLogin] = useState('Secure')
@@ -21,6 +23,9 @@ export default function Login() {
   const loginHandler = async (e) => {
     e.preventDefault();
     dispatcher(loginUser(loginData))
+    dispatcher(fetchMyProfile())
+    dispatcher(fetchDrivingSchools())
+    // navigate('/myprofile')
   }
   return (
     <>

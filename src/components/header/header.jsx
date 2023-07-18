@@ -26,7 +26,7 @@ export default function Header() {
             <NavLink className="navlink" to="/alldrivers">
               DRIVERS
             </NavLink>
-            <NavLink className="navlink" to="driverprofile">
+            <NavLink className="navlink" to="myprofile">
               MY PROFILE
             </NavLink>
             <NavLink className="navlink" to="login">
