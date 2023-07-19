@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { editMyProfile, fetchMyProfile } from '../app/slices/myProfileSlice'
 import { fetchDrivingSchools } from '../app/slices/drivingSchoolSlice'
 import ProfileForm from '../components/myProfile/profileForm/profileForm'
+import { BookingsCreationForm } from '../components/myProfile/bookings/bookingsCreationForm'
+import { BookingsTable } from '../components/myProfile/bookings/bookingsTable'
+import { BookingsNotAvailableForm } from '../components/myProfile/bookings/bookingsNotAvailableForm'
 
 export default function MyProfile() {
 
@@ -158,6 +161,18 @@ export default function MyProfile() {
                   />
                 </>
               }
+                {bookingsActivated && (
+                <>
+                    {myProfile.type === "I" && (
+                    <div className='Bookings-Creation-Not-Available'>
+                        <BookingsCreationForm></BookingsCreationForm>
+                        <BookingsNotAvailableForm></BookingsNotAvailableForm>
+                    </div>
+
+                    )}
+                    <BookingsTable></BookingsTable>
+                </>
+                )}
             </>
           }
         </div>

@@ -12,6 +12,7 @@
     }
   .MyProfile-Header {
     height: 6rem;
+    width: 75rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -32,6 +33,10 @@
         color: orange;
       }
     }
+  }
+
+  .Bookings-Creation-Not-Available {
+    display: flex;
   }
 
 
