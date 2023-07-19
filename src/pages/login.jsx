@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../app/slices/currentUserSlice';
 import { fetchMyProfile } from '../app/slices/myProfileSlice';
 import { fetchDrivingSchools } from '../app/slices/drivingSchoolSlice';
+import { fetchMyAppointmentsInstructor } from '../app/slices/bookingSlice';
 
 export default function Login() {
 
@@ -14,6 +15,7 @@ export default function Login() {
   const [passwordLogin, setPasswordLogin] = useState('Secure')
 
   const loginState = useSelector((store) => store.currentUser)
+  const currentUserData = loginState.data
   const myProfileState = useSelector((store) => store.myProfile)
 
   // const [email, setEmail] = useState("");
@@ -38,6 +40,10 @@ export default function Login() {
     if (loginState.loggedIn) {
       dispatch(fetchMyProfile());
       dispatch(fetchDrivingSchools());
+
+      
+        dispatch(fetchMyAppointmentsInstructor())
+      
     }
   }, [loginState.loggedIn, dispatch]);
 

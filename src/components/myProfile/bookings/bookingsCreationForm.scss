@@ -1,0 +1,70 @@
+@import '../../../styles/variables';
+
+.Create-Bookings-Form-Div {
+    width: 25rem;
+    margin-top: 3rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-bottom: 5rem;
+
+    //background-color: red;
+
+    h3 {
+        padding: 1rem;
+    }
+
+    .creation-success {
+        color: green;
+    }
+
+    .creation-failed {
+        color: red;
+    }
+
+    .Create-Booking-Form {
+
+        //background-color: green;
+
+        padding: 1rem;
+
+        .Create-Bookings-Form-Element {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        
+            .Create-Bookings-Form-Input {
+        
+                height: 2.1rem;
+                width: 17rem;
+                border: 1px solid black;
+                font-size: 1rem;
+                padding-left: 0.5rem;
+                border-radius: 0.5rem;
+
+                font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Oxygen',
+                            'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                            sans-serif;
+        
+            }
+        
+        
+        
+        }
+        
+        .submit {
+            margin-top: 3rem;
+            background: $gradient;
+            border: $button-border;
+            padding: $buton-padding;
+            border-radius: $button-radius;
+            color: white;
+            font-weight: $button-weight;
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+    }
+
+    
+    
+}
