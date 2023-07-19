@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../app/slices/currentUserSlice';
 import { fetchMyProfile } from '../app/slices/myProfileSlice';
@@ -7,11 +7,15 @@ import { fetchDrivingSchools } from '../app/slices/drivingSchoolSlice';
 
 export default function Login() {
 
-  const dispatcher = useDispatch()
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const [emailLogin, setEmailLogin] = useState('harryhirsch@wowds.com')
   const [passwordLogin, setPasswordLogin] = useState('Secure')
+
+  const loginState = useSelector((store) => store.currentUser)
+  const myProfileState = useSelector((store) => store.myProfile)
+
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState();
 
@@ -22,11 +26,28 @@ export default function Login() {
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    dispatcher(loginUser(loginData))
-    dispatcher(fetchMyProfile())
-    dispatcher(fetchDrivingSchools())
-    // navigate('/myprofile')
-  }
+
+    try {
+      await dispatch(loginUser(loginData));
+    } catch (error) {
+      console.log('Login error:', error);
+    }
+  };
+
+  useEffect(() => {
+    if (loginState.loggedIn) {
+      dispatch(fetchMyProfile());
+      dispatch(fetchDrivingSchools());
+    }
+  }, [loginState.loggedIn, dispatch]);
+
+  useEffect(() => {
+    if (myProfileState.ready) {
+      navigate('/myprofile/');
+    }
+  }, [myProfileState.ready, navigate]);
+
+
   return (
     <>
     <div className="cta">

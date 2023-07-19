@@ -114,6 +114,7 @@ export const currentUserSlice = createSlice({
         vehicles: "",
         signedUp: false,
         error: null,
+        loggedIn: false,
 
     },
     reducers: {
@@ -139,6 +140,7 @@ export const currentUserSlice = createSlice({
             state.last_name = action.payload.last_name
             state.driving_school = action.payload.driving_school
             state.vehicles = action.payload.vehicles
+            state.loggedIn = true
         },
 
         DELETE_USER: state => {
@@ -163,6 +165,7 @@ export const currentUserSlice = createSlice({
             state.last_name = ""
             state.driving_school = ""
             state.vehicles = ""
+            state.loggedIn = false
         }
     },
 
@@ -193,6 +196,8 @@ export const currentUserSlice = createSlice({
 
             state.signedUp = null
             state.error = null
+
+            state.loggedIn = true
         },
 
         [signUpUser.fulfilled]: (state) => {

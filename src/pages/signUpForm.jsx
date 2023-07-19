@@ -100,21 +100,21 @@ export default function SignUpForm() {
 
 
   
-  const setupData = {
-    email: email,
-    gender: gender,
-    type: userType,
-    address: address,
-    postal_code: postalCode,
-    location_city: locationCity,
-    country: country,
-    about: about,
-    // profile_image: profileImage,
-    instructor_license: instructorLicense,
-    has_learner_permit: hasLearnerPermit,
-    phone: phone,
-    driving_school: drivingSchool
-  }
+  // const setupData = {
+  //   email: email,
+  //   gender: gender,
+  //   type: userType,
+  //   address: address,
+  //   postal_code: postalCode,
+  //   location_city: locationCity,
+  //   country: country,
+  //   about: about,
+  //   // profile_image: profileImage,
+  //   instructor_license: instructorLicense,
+  //   has_learner_permit: hasLearnerPermit,
+  //   phone: phone,
+  //   driving_school: drivingSchool
+  // }
 
   // console.log(gender)
   // console.log(userType)
@@ -140,8 +140,10 @@ export default function SignUpForm() {
     formData.append('instructor_license', instructorLicense);
     formData.append('has_learner_permit', hasLearnerPermitStr);
     formData.append('phone', phone);
-    formData.append('driving_school', drivingSchool);
-
+    if (userType == "I") {
+      formData.append('driving_school', drivingSchool);  
+    }
+    
     console.log('Sending form data:', [...formData]);
     dispatch(setUpUser(formData));
     navigate('/login')

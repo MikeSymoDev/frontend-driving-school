@@ -1,0 +1,140 @@
+@import '../../../styles/variables';
+
+.MyProfile-Profile {
+
+    margin-top: 2rem;
+
+    button{
+        color: white
+    }
+
+    .Edit-Profile-Div {
+
+      display: flex;
+      flex-direction: row;
+      //background-color: red;
+      width: 75rem;
+
+      
+
+        //display: flex;
+        //background-color: blue;
+
+        .Edit-Profile-Form{
+
+          display: flex;
+          flex-direction: column;
+
+          .My-Profile-Input-Container{
+            width: 75rem;
+            //background-color: blue;
+            display: flex;
+            justify-content: space-around;
+
+            .MyProfile-Profile-Left {
+              width: 30rem;
+              //background-color: green;
+              display: flex;
+              flex-direction: column;
+          }
+  
+          .MyProfile-Profile-Right {
+            width: 30rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+          }
+
+
+        }
+
+      
+        //width: 35rem;
+    
+        .Edit-Profile-Form-Element {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        
+            .Edit-Profile-Form-Input {
+        
+                height: 2.1rem;
+                width: 17rem;
+                border: 1px solid black;
+                font-size: 1rem;
+                padding-left: 0.5rem;
+                border-radius: 0.5rem;
+        
+            }
+        
+            .Edit-Profile-Form-DropDown {
+                
+                height: 2.5rem;
+                width: 17.8rem;
+                border: 1px solid black;
+                font-size: 0.85rem;
+                padding-left: 0.5rem;
+                border-radius: 0.5rem;
+            }
+        
+            .Edit-Profile-Form-TextArea {
+        
+                height: 6.1rem;
+                width: 17rem;
+                border: 1px solid black;
+                font-size: 1rem;
+                padding-left: 0.5rem;
+                border-radius: 0.5rem;
+        
+            }
+        
+        }
+        
+        .submit {
+            margin-top: 2rem;
+            background: $gradient;
+            border: $button-border;
+            padding: $buton-padding;
+            border-radius: $button-radius;
+            color: white;
+            font-weight: $button-weight;
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+
+        .Save-Cancel-Div{
+            
+
+            .save-submit {
+                margin-right: 2rem;
+                margin-top: 2rem;
+                background: $gradient;
+                border: $button-border;
+                padding: $buton-padding;
+                border-radius: $button-radius;
+                color: white;
+                font-weight: $button-weight;
+                font-size: 1.25rem;
+                cursor: pointer;
+            }
+
+            .cancel-edit-button {
+                margin-left: 2rem;
+            }
+
+
+
+
+            //width: 20rem;
+        }
+        
+        
+    }
+    
+    
+    
+
+
+  }

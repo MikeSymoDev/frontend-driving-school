@@ -1,4 +1,5 @@
 import React from 'react'
+import './signUpStart.scss'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 export default function SignUpStart() {
@@ -17,8 +18,10 @@ export default function SignUpStart() {
             It depends for what reasons you are here: <br></br>
             Would you like to learn or would you like to teach?
           </p>
-          <button onClick={() => handleUserType('S')}>STUDENT</button>
-          <button onClick={() => handleUserType('I')}>INSTRUCTOR</button>
+          <div className='Choose-Type'>
+            <button onClick={() => handleUserType('S')}>STUDENT</button>
+            <button onClick={() => handleUserType('I')}>INSTRUCTOR</button>
+          </div>
         </div>
       </div>
     </>
