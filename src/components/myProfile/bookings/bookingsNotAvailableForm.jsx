@@ -23,7 +23,7 @@ export const BookingsNotAvailableForm = () => {
           .then((data) => {
             setCreationMessage(data.payload.message); // Extract the message from the response data
             console.log(data)
-            dispatch(fetchMyAppointmentsInstructor())
+            //dispatch(fetchMyAppointmentsInstructor())
           })
           .catch((error) => {
             setCreationMessage("Failed to create bookings");
