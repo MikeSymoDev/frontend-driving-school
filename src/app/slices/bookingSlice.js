@@ -59,6 +59,23 @@ const fetchAppointmentsByDate = createAsyncThunk(
     }
   );
 
+const bookAppointment = createAsyncThunk(
+    "/book/appointment/",
+    async ({ bookingId }, { getState }) => {
+      const { currentUser } = getState();
+  
+      axiosInstance.defaults.headers.common = {
+        Authorization: `Bearer ${currentUser.token}`,
+      };
+  
+      const response = await axiosInstance.get(
+        `/appointment/${bookingId}`
+      );
+      console.log(response.data)
+      return response.data;
+    }
+)
+
 export const bookingSlice = createSlice({
     name: 'bookings',
     initialState: {
@@ -117,5 +134,5 @@ export const bookingSlice = createSlice({
     }
 })
 
-export { createNewAppointments, setAppointmentsNotAvailable, fetchMyAppointmentsInstructor, fetchAppointmentsByDate }
+export { createNewAppointments, setAppointmentsNotAvailable, fetchMyAppointmentsInstructor, fetchAppointmentsByDate, bookAppointment }
 export default bookingSlice.reducer
