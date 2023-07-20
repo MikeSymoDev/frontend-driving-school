@@ -1,9 +1,26 @@
 import React from 'react';
 import LogoWhite from '../../assets/logos/logo_dh_whitenew.png';
 import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useSelector } from "react-redux";
+import { DELETE_USER } from '../../app/slices/currentUserSlice';
 import './header.scss';
 
 export default function Header() {
+
+const user = useSelector((store) => store.currentUser);
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
+
+   const handleLogout = () => {
+    dispatch(DELETE_USER());
+    localStorage.clear();
+    navigate('/login');
+   }
+
+
+
   return (
     <>
       <div className="header">
@@ -35,7 +52,8 @@ export default function Header() {
             <NavLink className="navlink" to="signup">
               SIGN UP
             </NavLink>
-            <button className="logout">LOGOUT</button>
+            {user.token && <button className='logout' onClick={handleLogout}>LOGOUT</button>}
+  
           </div>
         </div>
       </div>
@@ -44,26 +62,4 @@ export default function Header() {
   );
 }
 
-// condtionioal linking to either student or driver provile:
 
-// import { NavLink } from 'react-router-dom';
-
-// // Assuming userType is set to either "student" or "driver" based on backend logic
-
-// const LinkComponent = ({ userType }) => {
-//   let linkDestination;
-
-//   if (userType === 'student') {
-//     linkDestination = '/students';
-//   } else if (userType === 'driver') {
-//     linkDestination = '/drivers';
-//   } else {
-//     linkDestination = '/';
-//   }
-
-//   return (
-//     <NavLink className="navlink" to={linkDestination}>
-//       MY PROFILE
-//     </NavLink>
-//   );
-// };
