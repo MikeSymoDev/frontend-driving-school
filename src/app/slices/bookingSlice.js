@@ -87,14 +87,18 @@ export const bookingSlice = createSlice({
         bookingsAsInstructor: null,
         appointmentsByDate: [],
         fetchAppointmentByDate: null,
+        bookingsChanged: false,
     },
     reducers: {
-
+        setInstructorAppointments: (state, { payload }) => {
+            state.instructorBookings = payload;
+          },
     },
 
     extraReducers: {
         [createNewAppointments.fulfilled]: (state, action) => {
             state.created = true
+            state.bookingsChanged = true
         },
 
 
@@ -104,6 +108,7 @@ export const bookingSlice = createSlice({
 
         [setAppointmentsNotAvailable.fulfilled]: (state, action) => {
             state.notAvailable = true
+            state.bookingsChanged = true
         },
 
 

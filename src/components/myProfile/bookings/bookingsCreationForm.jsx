@@ -23,7 +23,7 @@ export const BookingsCreationForm = () => {
         console.log(periodData)
 
         dispatch(createNewAppointments(periodData))
-        // dispatch(fetchMyAppointmentsInstructor())
+        dispatch(fetchMyAppointmentsInstructor())
 
     }
 
