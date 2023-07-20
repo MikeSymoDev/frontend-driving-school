@@ -166,6 +166,7 @@ export const currentUserSlice = createSlice({
             state.driving_school = ""
             state.vehicles = ""
             state.loggedIn = false
+            localStorage.clear();
         }
     },
 

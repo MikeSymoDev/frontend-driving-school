@@ -6,15 +6,19 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from "react-redux";
 import { DELETE_USER } from '../../app/slices/currentUserSlice';
 import './header.scss';
+import { DELETE_MYPROFILE } from '../../app/slices/myProfileSlice';
 
 export default function Header() {
 
 const user = useSelector((store) => store.currentUser);
-   const navigate = useNavigate();
-   const dispatch = useDispatch();
+const myProfileState = useSelector((store) => store.myProfile)
+const navigate = useNavigate();
+const dispatch = useDispatch();
+
 
    const handleLogout = () => {
     dispatch(DELETE_USER());
+    dispatch(DELETE_MYPROFILE())
     localStorage.clear();
     navigate('/login');
    }
