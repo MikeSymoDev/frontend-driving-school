@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAppointmentsNotAvailable } from "../../../app/slices/bookingSlice";
+import { fetchMyAppointmentsInstructor, setAppointmentsNotAvailable } from "../../../app/slices/bookingSlice";
 import "./bookingsNotAvailableForm.scss"
 
 export const BookingsNotAvailableForm = () => {
@@ -23,6 +23,7 @@ export const BookingsNotAvailableForm = () => {
           .then((data) => {
             setCreationMessage(data.payload.message); // Extract the message from the response data
             console.log(data)
+            dispatch(fetchMyAppointmentsInstructor())
           })
           .catch((error) => {
             setCreationMessage("Failed to create bookings");

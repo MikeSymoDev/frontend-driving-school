@@ -53,7 +53,9 @@ export const bookingSlice = createSlice({
         bookingsAsInstructor: null,
     },
     reducers: {
-
+        setInstructorAppointments: (state, { payload }) => {
+            state.instructorBookings = payload;
+          },
     },
 
     extraReducers: {
