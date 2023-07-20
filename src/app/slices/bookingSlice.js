@@ -36,8 +36,8 @@ const fetchMyAppointmentsInstructor = createAsyncThunk (
             };
 
         const response = await axiosInstance.get("/appointment/me/instructor/")
-        console.log(response)
-        console.log(response.data)
+        // console.log(response)
+        // console.log(response.data)
         return response.data;;
     }
 )
@@ -76,15 +76,32 @@ const bookAppointment = createAsyncThunk(
     }
 )
 
+const fetchMyAppointmentsStudent = createAsyncThunk (
+    "/appointment/me/student/", async (_, { getState }) => {
+        const { currentUser } = getState();
+
+        axiosInstance.defaults.headers.common = {
+            Authorization: `Bearer ${currentUser.token}`,
+            };
+
+        const response = await axiosInstance.get("/appointment/mybookings/")
+        // console.log(response)
+        // console.log(response.data)
+        return response.data;;
+    }
+)
+
 export const bookingSlice = createSlice({
     name: 'bookings',
     initialState: {
 
         data: [],
         instructorBookings: [],
+        studentBookings: [],
         created: null,
         notAvailable: null,
         bookingsAsInstructor: null,
+        bookingsAsStudent: null,
         appointmentsByDate: [],
         fetchAppointmentByDate: null,
         bookingsChanged: false,
@@ -93,6 +110,12 @@ export const bookingSlice = createSlice({
         setInstructorAppointments: (state, { payload }) => {
             state.instructorBookings = payload;
           },
+        
+        setStudentAppointments: (state, { payload }) => {
+            state.studentBookings = payload;
+        },
+
+        
     },
 
     extraReducers: {
@@ -122,6 +145,12 @@ export const bookingSlice = createSlice({
 
         },
 
+        [fetchMyAppointmentsStudent.fulfilled]: (state, action) => {
+            state.bookingsAsStudent = true
+            state.studentBookings = action.payload
+
+        },
+
 
         [fetchMyAppointmentsInstructor.rejected]: (state, action) => {
             // state.notAvailable = false
@@ -137,5 +166,5 @@ export const bookingSlice = createSlice({
     }
 })
 
-export { createNewAppointments, setAppointmentsNotAvailable, fetchMyAppointmentsInstructor, fetchAppointmentsByDate, bookAppointment }
+export { createNewAppointments, setAppointmentsNotAvailable, fetchMyAppointmentsInstructor, fetchAppointmentsByDate, bookAppointment, fetchMyAppointmentsStudent }
 export default bookingSlice.reducer

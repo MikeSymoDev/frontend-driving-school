@@ -42,7 +42,7 @@ export default function Login() {
       dispatch(fetchDrivingSchools());
 
       
-        dispatch(fetchMyAppointmentsInstructor())
+        //dispatch(fetchMyAppointmentsInstructor())
       
     }
   }, [loginState.loggedIn, dispatch]);
