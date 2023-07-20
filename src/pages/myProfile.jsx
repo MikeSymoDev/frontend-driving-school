@@ -165,6 +165,7 @@ export default function MyProfile() {
                 <>
                     {myProfile.type === "I" && (
                     <div className='Bookings-Creation-Not-Available'>
+                      
                         <BookingsCreationForm></BookingsCreationForm>
                         <BookingsNotAvailableForm></BookingsNotAvailableForm>
                     </div>
