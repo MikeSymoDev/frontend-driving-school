@@ -3,15 +3,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
 import DriverDetail from './pages/driverDetail';
 import DriverOverview from './pages/driverOverview';
-import DriverProfile from './pages/driverProfile';
 import SignUpForm from './pages/signUpForm';
 import SignUpStart from './pages/signUpStart';
-import StudentProfile from './pages/studentProfile';
 import Login from './pages/login';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import CallToAction from './components/callToAction/callToAction';
 import MyProfile from './pages/myProfile';
+import RequireAuth from './app/requireAuth';
 
 function App() {
   return (
@@ -24,13 +23,11 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='alldrivers' element={<DriverOverview />} />
           <Route path='driverdetail/:id' element={<DriverDetail />} />
-          <Route path='myprofile' element={<MyProfile />} />
+          <Route path='myprofile' element={<RequireAuth><MyProfile /></RequireAuth>} />
           <Route path='signup' element={<SignUpStart />} />
           <Route path='signupform' element={<SignUpForm />} />
-          <Route path='studentprofile' element={<StudentProfile />} />
           <Route path='login' element={<Login />} />
 
-{/* Driver Profile and Student Profile needs to be RequireAuth */}
 
         </Routes>
 
