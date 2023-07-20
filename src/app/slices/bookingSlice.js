@@ -42,6 +42,23 @@ const fetchMyAppointmentsInstructor = createAsyncThunk (
     }
 )
 
+const fetchAppointmentsByDate = createAsyncThunk(
+    "/appointment/by-date/",
+    async ({ instructorId, date }, { getState }) => {
+      const { currentUser } = getState();
+  
+      axiosInstance.defaults.headers.common = {
+        Authorization: `Bearer ${currentUser.token}`,
+      };
+  
+      const response = await axiosInstance.get(
+        `/appointment/by-date/${instructorId}/?search=${date}`
+      );
+      console.log(response.data)
+      return response.data;
+    }
+  );
+
 export const bookingSlice = createSlice({
     name: 'bookings',
     initialState: {
@@ -51,6 +68,8 @@ export const bookingSlice = createSlice({
         created: null,
         notAvailable: null,
         bookingsAsInstructor: null,
+        appointmentsByDate: [],
+        fetchAppointmentByDate: null,
     },
     reducers: {
         setInstructorAppointments: (state, { payload }) => {
@@ -88,9 +107,15 @@ export const bookingSlice = createSlice({
             // state.notAvailable = false
         },
 
+        [fetchAppointmentsByDate.fulfilled]: (state, action) => {
+            state.appointmentsByDate = action.payload
+            state.fetchAppointmentByDate = true
+
+        },
+
 
     }
 })
 
-export { createNewAppointments, setAppointmentsNotAvailable, fetchMyAppointmentsInstructor }
+export { createNewAppointments, setAppointmentsNotAvailable, fetchMyAppointmentsInstructor, fetchAppointmentsByDate }
 export default bookingSlice.reducer
