@@ -42,6 +42,14 @@ export const myProfileSlice = createSlice({
         setMyProfile: (state, { payload }) => {
             state.data = payload;
           },
+
+          DELETE_MYPROFILE: state => {
+            state.data = []
+            state.ready = false;
+            localStorage.clear();
+        }
+        
+
     },
 
 
@@ -55,5 +63,6 @@ export const myProfileSlice = createSlice({
       },
 })
 
+export const { DELETE_MYPROFILE } = myProfileSlice.actions
 export { fetchMyProfile, editMyProfile }
 export default myProfileSlice.reducer

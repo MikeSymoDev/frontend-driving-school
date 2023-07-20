@@ -1,26 +1,43 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMyAppointmentsInstructor, setAppointmentsNotAvailable } from "../../../app/slices/bookingSlice";
+import { fetchMyAppointmentsInstructor, fetchMyAppointmentsStudent, setAppointmentsNotAvailable } from "../../../app/slices/bookingSlice";
 import "./bookingsTable.scss"
 
 export const BookingsTable = () => {
   const dispatch = useDispatch();
   const instructorBookings = useSelector((state) => state.bookings.instructorBookings);
+  const studentBookings = useSelector((state) => state.bookings.studentBookings);
   const bookingsChanged = useSelector((state) => state.bookings.bookingsChanged);
+  const currentUser = useSelector((store) => store.currentUser)
 
   useEffect(() => {
     dispatch(fetchMyAppointmentsInstructor());
   }, [dispatch, bookingsChanged]);
   console.log(instructorBookings);
 
+  console.log(currentUser.type)
+
+  useEffect(() => {
+    dispatch(fetchMyAppointmentsStudent())
+  }, [dispatch])
+
+
 
   // State for sorting
   const [sortColumn, setSortColumn] = useState("date");
   const [sortOrder, setSortOrder] = useState("asc");
 
+  let bookings;
 
-  // Sort appointments based on sortColumn and sortOrder
-  const sortedAppointments = instructorBookings.slice().sort((a, b) => {
+  if (currentUser.type == "I") {
+    bookings = instructorBookings
+  }
+
+  else{
+    bookings = studentBookings
+  }
+
+  const sortedAppointments = bookings.slice().sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
 
@@ -30,7 +47,8 @@ export const BookingsTable = () => {
       return dateA.setHours(a.start_time) - dateB.setHours(b.start_time);
     }
     return 0;
-  });
+  })
+
 
   // Reverse sortedAppointments if sortOrder is 'desc'
   const sortedAndOrderedAppointments =
