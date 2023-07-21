@@ -8,7 +8,6 @@ import SignUpStart from './pages/signUpStart';
 import Login from './pages/login';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
-import CallToAction from './components/callToAction/callToAction';
 import MyProfile from './pages/myProfile';
 import RequireAuth from './app/requireAuth';
 
@@ -30,8 +29,6 @@ function App() {
 
 
         </Routes>
-
-        <CallToAction />
         
       </div>
 
