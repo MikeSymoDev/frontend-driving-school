@@ -152,8 +152,7 @@ export default function SignUpForm() {
 
   return (
     <>
-        <div className="cta">
-        <div className="textalign">
+        <div className="SignUp-Form-Container">
         {!signUpState.signedUp ? (
           <>
              <h2>{signUpMessage}</h2>
@@ -280,7 +279,6 @@ export default function SignUpForm() {
            </>
         )}
          
-        </div>
       </div>
     </>
   )

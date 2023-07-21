@@ -56,8 +56,7 @@ export default function Login() {
 
   return (
     <>
-    <div className="cta">
-      <div className="textalign">
+    <div className="SignUp-Form-Container">
         <h2>Login to BOOK. LEARN. DRIVE.</h2>
         <p>Please enter your Email and Password</p>
         <div className='Sign-Setup-Login-Form-Div'>
@@ -75,7 +74,6 @@ export default function Login() {
             </div>
           </form>
         </div>
-      </div>
     </div>
   </>
   )

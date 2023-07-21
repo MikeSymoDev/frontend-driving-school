@@ -1,6 +1,14 @@
 @import '../styles/variables';
 
+
 .MyProfile-Container {
+
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding-left: 8rem;
+  padding-right: 8rem;
+  padding-bottom: 8rem;
 
     .Profile-Image {
         padding-bottom: 2rem;
