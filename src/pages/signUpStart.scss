@@ -1,3 +1,43 @@
+@import '../styles/variables';
+@import '../styles/breakpoints';
+
+.SignUp-Start-Container {
+
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    padding-bottom: 8rem;
+
+
+
+  button {
+    background: $gradient;
+    border: $button-border;
+    padding: $buton-padding;
+    border-radius: $button-radius;
+    font-weight: $button-weight;
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+    color: $button-hero-text;
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    margin-bottom: 3rem;
+  }
+
+
+
 .Choose-Type {
     
     button {
@@ -5,4 +45,6 @@
         margin-left: 0.5rem;
         margin-right: 0.5rem
     }
+}
+
 }

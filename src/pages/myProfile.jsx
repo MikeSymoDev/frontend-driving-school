@@ -7,6 +7,8 @@ import ProfileForm from '../components/myProfile/profileForm/profileForm'
 import { BookingsCreationForm } from '../components/myProfile/bookings/bookingsCreationForm'
 import { BookingsTable } from '../components/myProfile/bookings/bookingsTable'
 import { BookingsNotAvailableForm } from '../components/myProfile/bookings/bookingsNotAvailableForm'
+import { VehiclesCreationForm } from '../components/myProfile/vehicles/vehiclesCreationForm'
+import { MyVehicles } from '../components/myProfile/vehicles/myVehicles'
 
 export default function MyProfile() {
 
@@ -91,7 +93,6 @@ export default function MyProfile() {
 
   return (
     <>
-      <div className="cta">
         <div className='MyProfile-Container'>
           {myProfileState.ready &&
             <>
@@ -174,10 +175,15 @@ export default function MyProfile() {
                     <BookingsTable></BookingsTable>
                 </>
                 )}
+                {vehiclesActivated && (
+                  <>
+                    <VehiclesCreationForm></VehiclesCreationForm>
+                    <MyVehicles></MyVehicles>
+                  </>
+                )}
             </>
           }
         </div>
-      </div>
     </>
   );
 }

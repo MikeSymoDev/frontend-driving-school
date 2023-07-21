@@ -11,8 +11,7 @@ export default function SignUpStart() {
   }
   return (
     <>
-        <div className="cta">
-        <div className="textalign">
+        <div className="SignUp-Start-Container"> 
           <h2>What Type are you?</h2>
           <p>
             It depends for what reasons you are here: <br></br>
@@ -22,7 +21,6 @@ export default function SignUpStart() {
             <button onClick={() => handleUserType('S')}>STUDENT</button>
             <button onClick={() => handleUserType('I')}>INSTRUCTOR</button>
           </div>
-        </div>
       </div>
     </>
   )

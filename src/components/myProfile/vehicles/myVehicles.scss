@@ -1,0 +1,78 @@
+@import '../../../styles/variables';
+
+.MyVehicles-Container{
+
+    margin-top: 5rem;
+
+
+    .MyVehicles-Grid {
+        margin-top: 3rem;
+        //background-color: red;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2.5rem;
+
+
+        .MyVehicle-Object {
+            width: 30rem;
+            margin-bottom: 3rem;
+        
+            .MyVehicle-Object-Description{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-left: 2rem;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .MyVehicle-Object-Image{
+                img{
+                    width: 100%;
+                    height: auto;
+                }
+            }
+
+        
+
+            .MyVehicle-Object-Button-Group {
+                margin-top: 1rem;
+                margin-left: 2rem;
+                margin-right: 2rem;
+                display: flex;
+                justify-content: space-between;
+
+                
+
+                .small-button{
+                    background: #440381;
+                    border: $button-border;
+                    width: 7rem;
+                    padding: 0.2rem;
+                    border-radius: $button-radius;
+                    font-weight: 500;
+                    font-size: 1rem;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+        
+        }
+    }
+
+
+
+
+
+    button{
+        background: $gradient;
+        border: $button-border;
+        padding: $buton-padding;
+        border-radius: $button-radius;
+        font-weight: $button-weight;
+        font-size: 1.25rem;
+        color: white;
+        cursor: pointer;
+    }
+
+}
