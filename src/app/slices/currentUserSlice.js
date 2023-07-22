@@ -32,7 +32,8 @@ const setUpUser = createAsyncThunk("user/setup", async (formData) => {
     }
 });
 
-  const uploadProfileImage = createAsyncThunk("user/me/edit/", async (payload) => {
+  const uploadProfileImage = createAsyncThunk("user/me/edit/", 
+  async (payload) => {
     try {
       const formData = new FormData();
       formData.append("profileImage", payload); // Assuming the payload is the image file
