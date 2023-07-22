@@ -105,6 +105,8 @@ export const bookingSlice = createSlice({
         appointmentsByDate: [],
         fetchAppointmentByDate: null,
         bookingsChanged: false,
+        loading: false,
+        ready: false
     },
     reducers: {
         setInstructorAppointments: (state, { payload }) => {
@@ -142,12 +144,32 @@ export const bookingSlice = createSlice({
         [fetchMyAppointmentsInstructor.fulfilled]: (state, action) => {
             state.bookingsAsInstructor = true
             state.instructorBookings = action.payload
+            state.loading = false
+            state.ready = true;
 
         },
 
         [fetchMyAppointmentsStudent.fulfilled]: (state, action) => {
             state.bookingsAsStudent = true
             state.studentBookings = action.payload
+            state.loading = false
+            state.ready = true;
+
+        },
+
+        [fetchMyAppointmentsInstructor.pending]: (state, action) => {
+            state.bookingsAsInstructor = true
+            state.loading = true
+
+        },
+
+        [fetchMyAppointmentsStudent.fulfilled]: (state, action) => {
+            state.bookingsAsStudent = true
+
+        },
+
+        [fetchMyAppointmentsStudent.pending]: (state, action) => {
+            state.bookingsAsInstructor = true
 
         },
 

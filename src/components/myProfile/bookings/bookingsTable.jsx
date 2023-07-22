@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMyAppointmentsInstructor, fetchMyAppointmentsStudent, setAppointmentsNotAvailable } from "../../../app/slices/bookingSlice";
 import "./bookingsTable.scss"
+import Spinner from "../../spinner/spinner";
 
 export const BookingsTable = () => {
   const dispatch = useDispatch();
+  const bookingsState = useSelector((state) => state.bookings)
   const instructorBookings = useSelector((state) => state.bookings.instructorBookings);
   const studentBookings = useSelector((state) => state.bookings.studentBookings);
   const bookingsChanged = useSelector((state) => state.bookings.bookingsChanged);
+
   const currentUser = useSelector((store) => store.currentUser)
 
   useEffect(() => {
@@ -33,7 +36,7 @@ export const BookingsTable = () => {
     bookings = instructorBookings
   }
 
-  else{
+  else {
     bookings = studentBookings
   }
 
@@ -181,17 +184,25 @@ export const BookingsTable = () => {
         </tr>
       </thead>
       <tbody>
-        {Array.isArray(filteredAppointments) && filteredAppointments.map((row, index) => (
-          <tr key={index}>
-            <td>{row.id}</td>
-            <td>{formatDate(row.date)}</td>
-            <td>{formatTime(row.start_time)}</td>
-            <td>{row.student?.email}</td>
-            <td>{row.instructor.email}</td> {/* Use optional chaining operator */}
-            <td>{row.notes}</td>
-            <td>{mapStateToLabel(row.state)}</td>
-          </tr>
-        ))}
+        {bookingsState.ready && (
+          <>
+            {Array.isArray(filteredAppointments) && filteredAppointments.map((row, index) => (
+              <tr key={index}>
+                <td>{row.id}</td>
+                <td>{formatDate(row.date)}</td>
+                <td>{formatTime(row.start_time)}</td>
+                <td>{row.student?.email}</td>
+                <td>{row.instructor?.email}</td> {/* Use optional chaining operator */}
+                <td>{row.notes}</td>
+                <td>{mapStateToLabel(row.state)}</td>
+              </tr>
+            ))}
+          </>
+        )}
+        {bookingsState.loading && (
+          <div className="Booking-Table-Spinner">
+            <Spinner></Spinner>
+          </div>)}
       </tbody>
     </table>
   );
