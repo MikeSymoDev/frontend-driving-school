@@ -122,6 +122,13 @@
 
             .cancel-edit-button {
                 margin-left: 2rem;
+                background: $gradient;
+                border: $button-border;
+                padding: $buton-padding;
+                border-radius: $button-radius;
+                font-weight: $button-weight;
+                font-size: 1.25rem;
+                cursor: pointer;
             }
 
 
