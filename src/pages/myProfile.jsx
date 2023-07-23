@@ -104,11 +104,7 @@ export default function MyProfile() {
     // ... handle cancel action
   };
 
-  const navigateToAppointments = () => {
-    
-    navigate('/driverdetail/2/appointments/');
-    
-  }
+
 
 
   return (
@@ -116,7 +112,6 @@ export default function MyProfile() {
         <div className='MyProfile-Container'>
           {myProfileState.ready &&
             <>
-            <button onClick={navigateToAppointments}></button>
               <h2>MY PROFILE</h2>
               <div className='Profile-Image'>
                 <img src={myProfile.profile_image} alt="Image description" />

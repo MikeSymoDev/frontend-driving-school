@@ -9,6 +9,7 @@ const signUpUser = createAsyncThunk("user/signup", async (payload) => {
       throw new Error(error.response.data.message);
     }
   });
+  
 
 //   const setUpUser = createAsyncThunk("user/setup", async (payload) => {
 //     try {
@@ -51,7 +52,8 @@ const setUpUser = createAsyncThunk("user/setup", async (formData) => {
 
 
 const loginUser = createAsyncThunk(
-    "user/login", async (payload) => {
+    "user/login", async (payload, thunkAPI) => {
+      try{
         const response = await axiosInstance.post("/token/", payload);
         const userData = {...response.data};
         const token = userData.access;
@@ -84,10 +86,15 @@ const loginUser = createAsyncThunk(
 
         localStorage.setItem("currentUser", JSON.stringify(userState))
         return userState;
-
+      } catch (error) {
+        // If there's an error, you can access the error message or data from the response
+        console.error("Login error:", error.message);
+        console.error("Error data:", error.response?.data);
+        // Return the error object as the payload to be handled in the rejected state
+        return thunkAPI.rejectWithValue(error.response?.data || error.message);
+      }
     }
-)
-
+  );
 
 export const currentUserSlice = createSlice({
     name: 'currentUser',
@@ -201,6 +208,11 @@ export const currentUserSlice = createSlice({
 
             state.loggedIn = true
         },
+
+
+        [loginUser.rejected]: (state, action) => {
+          state.error = action.payload;
+      },
 
         [signUpUser.fulfilled]: (state) => {
             console.log("User is Signed Up")

@@ -5,6 +5,7 @@ import { loginUser } from '../app/slices/currentUserSlice';
 import { fetchMyProfile } from '../app/slices/myProfileSlice';
 import { fetchDrivingSchools } from '../app/slices/drivingSchoolSlice';
 import { fetchMyAppointmentsInstructor } from '../app/slices/bookingSlice';
+import './login.scss'
 
 export default function Login() {
 
@@ -13,11 +14,13 @@ export default function Login() {
 
   const [emailLogin, setEmailLogin] = useState('harryhirsch@wowds.com')
   const [passwordLogin, setPasswordLogin] = useState('Secure')
+  const [loginMessage, setLoginMessage] = useState("");
 
   const loginState = useSelector((store) => store.currentUser)
   const currentUserData = loginState.data
   const myProfileState = useSelector((store) => store.myProfile)
-
+  const error = useSelector((state) => state.currentUser.error);
+  console.log(error)
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState();
 
@@ -32,7 +35,10 @@ export default function Login() {
     try {
       await dispatch(loginUser(loginData));
     } catch (error) {
-      console.log('Login error:', error);
+      console.error('Login error:', error.message);
+      // If you want to display the error message on the screen, you can set it to the component's state
+      // Assuming you have a useState hook to manage the error state
+      // setError(error.message);
     }
   };
 
@@ -59,15 +65,16 @@ export default function Login() {
     <div className="SignUp-Form-Container">
         <h2>Login to BOOK. LEARN. DRIVE.</h2>
         <p>Please enter your Email and Password</p>
+        {error && <p className='error-message'>Error: {error.detail}</p>}
         <div className='Sign-Setup-Login-Form-Div'>
           <form onSubmit={(e) => loginHandler(e)} className='Login-Form'>
             <div className='Sign-Setup-Login-Form-Element'>
               <label>Email</label>
-              <input type="email" className='Sign-Setup-Login-Form-Input' placeholder="Email" value={emailLogin}  onChange={(e)=>{setEmailLogin(e.target.value)}} />
+              <input type="email" required className='Sign-Setup-Login-Form-Input' placeholder="Email" value={emailLogin}  onChange={(e)=>{setEmailLogin(e.target.value)}} />
             </div>
             <div className='Sign-Setup-Login-Form-Element'>
               <label>Password</label>
-              <input type="password" className='Sign-Setup-Login-Form-Input' placeholder="Password" value={passwordLogin} onChange={(e)=>{setPasswordLogin(e.target.value)}} />
+              <input type="password" required className='Sign-Setup-Login-Form-Input' placeholder="Password" value={passwordLogin} onChange={(e)=>{setPasswordLogin(e.target.value)}} />
             </div>
             <div>
                     <input className= "submit" type="submit" value="LOGIN" />
