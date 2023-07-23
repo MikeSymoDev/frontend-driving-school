@@ -10,6 +10,7 @@ import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import MyProfile from './pages/myProfile';
 import RequireAuth from './app/requireAuth';
+import { DriverAppointment } from './pages/driverAppointment';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='alldrivers' element={<DriverOverview />} />
           <Route path='driverdetail/:id' element={<DriverDetail />} />
+          <Route path='driverdetail/:id/appointments' element={<DriverAppointment />} />
           <Route path='myprofile' element={<RequireAuth><MyProfile /></RequireAuth>} />
           <Route path='signup' element={<SignUpStart />} />
           <Route path='signupform' element={<SignUpForm />} />
