@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import "../bookingStudent/BookingStudent.scss";
 import "../../styles/_variables.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { bookAppointment, fetchAppointmentsByDate } from "../../app/slices/bookingSlice";
+import {
+  bookAppointment,
+  fetchAppointmentsByDate,
+} from "../../app/slices/bookingSlice";
 
 const BookingComponent = () => {
-
-  const bookingState = useSelector((store) => store.bookings)
+  const bookingState = useSelector((store) => store.bookings);
 
   const [selectedDate, setSelectedDate] = useState("");
   const [availableTimes, setAvailableTimes] = useState([]);
@@ -16,9 +18,8 @@ const BookingComponent = () => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    fetchAppointmentsByDateHandler(selectedDate)
-
-  }, [dispatch, bookingState.booked])
+    fetchAppointmentsByDateHandler(selectedDate);
+  }, [dispatch, bookingState.booked]);
 
   const handleDateChange = (e) => {
     const selectedDate = e.target.value;
@@ -52,15 +53,22 @@ const BookingComponent = () => {
     return timeA - timeB;
   };
 
+  const mapStateToLabel = (state) => {
+    const STATE_CHOICES = {
+      O: "Open",
+      B: "Booked",
+      NA: "Not Available",
+    };
+    return STATE_CHOICES[state] || "";
+  };
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
   };
 
   const handleBookAppointment = (appointmentId) => {
-
-    dispatch(bookAppointment(appointmentId))
-    setSelectedDate(date)
-    
+    dispatch(bookAppointment(appointmentId));
+    setSelectedDate(date);
   };
 
   return (
@@ -89,33 +97,33 @@ const BookingComponent = () => {
             .slice() // Create a copy of the array to avoid mutating the original
             .sort(compareAppointmentsByStartTime) // Sort the copied array
             .map((appointment) => (
-            <div key={appointment.id} className="time-card">
-              <h3>Start Slot: {formatTime(appointment.start_time)}</h3>
-              {/* ////////
+              <div key={appointment.id} className="time-card">
+                <h3>Start Slot: {formatTime(appointment.start_time)}</h3>
+                {/* ////////
               {appointment.state === "NA" ? (
                 <h6>State: {"unavailable "}</h6>
               ) : (
                 <h6>State: {"avaliable "}</h6>
               )} */}
-              <h6>State: {" " + appointment.state}</h6>
+                <h6>State: {mapStateToLabel(appointment.state)}</h6>
 
-              <h6>
-                Instructor:{" "}
-                {appointment.instructor.first_name +
-                  " " +
-                  appointment.instructor.last_name}
-              </h6>
-              <h6>Email: {" " + appointment.instructor.email}</h6>
-              <h6>Location:{" " + appointment.location}</h6>
-              {appointment.state === "NA" && <p className="taken">BOOK</p>}
-              {appointment.state === "B" && <p className="taken">BOOK</p>}
-              {appointment.state === "O" &&  <button
-                  onClick={() => handleBookAppointment(appointment.id)}
-                >
-                  BOOK
-                </button>}
-            </div>
-          ))}
+                <h6>
+                  Instructor:{" "}
+                  {appointment.instructor.first_name +
+                    " " +
+                    appointment.instructor.last_name}
+                </h6>
+                <h6>Email: {" " + appointment.instructor.email}</h6>
+                <h6>Location:{" " + appointment.location}</h6>
+                {appointment.state === "NA" && <p className="taken">BOOK</p>}
+                {appointment.state === "B" && <p className="taken">BOOK</p>}
+                {appointment.state === "O" && (
+                  <button onClick={() => handleBookAppointment(appointment.id)}>
+                    BOOK
+                  </button>
+                )}
+              </div>
+            ))}
       </div>
     </div>
   );
