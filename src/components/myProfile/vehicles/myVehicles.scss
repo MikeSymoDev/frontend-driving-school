@@ -1,6 +1,6 @@
 @import '../../../styles/variables';
 
-.MyVehicles-Container{
+.MyVehicles-Container {
 
     margin-top: 5rem;
 
@@ -15,8 +15,8 @@
         .MyVehicle-Object {
             width: 30rem;
             margin-bottom: 3rem;
-        
-            .MyVehicle-Object-Description{
+
+            .MyVehicle-Object-Description {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
@@ -25,14 +25,36 @@
                 margin-bottom: 1rem;
             }
 
-            .MyVehicle-Object-Image{
-                img{
+            .MyVehicle-Object-Image {
+                img {
                     width: 100%;
-                    height: auto;
+                    height: 20rem;
+                }
+
+
+
+
+            }
+
+            .No-Image-Container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 20rem;
+                border: #440381 1px dotted;
+
+                p {
+                    margin-bottom: 1rem;
+                }
+
+                input {
+                    margin-top: 1rem;
                 }
             }
 
-        
+
 
             .MyVehicle-Object-Button-Group {
                 margin-top: 1rem;
@@ -41,9 +63,9 @@
                 display: flex;
                 justify-content: space-between;
 
-                
 
-                .small-button{
+
+                .small-button {
                     background: #440381;
                     border: $button-border;
                     width: 7rem;
@@ -53,9 +75,15 @@
                     font-size: 1rem;
                     color: white;
                     cursor: pointer;
+
+                    &:disabled {
+                        // Style for the disabled button (grey background)
+                        background: #ccc;
+                        cursor: not-allowed;
+                    }
                 }
             }
-        
+
         }
     }
 
@@ -63,7 +91,7 @@
 
 
 
-    button{
+    button {
         background: $gradient;
         border: $button-border;
         padding: $buton-padding;
