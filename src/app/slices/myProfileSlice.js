@@ -32,6 +32,22 @@ const editMyProfile = createAsyncThunk(
   }
 );
 
+const editEmailUserFirstLastName = createAsyncThunk(
+  "/user/update-user/",
+  async (updatedProfile, { getState }) => {
+    const { currentUser } = getState();
+
+    axiosInstance.defaults.headers.common = {
+      Authorization: `Bearer ${currentUser.token}`,
+    };
+
+    const response = await axiosInstance.patch("/user/update-user/", updatedProfile);
+    console.log(response);
+    console.log(response.data);
+    return response.data;
+  }
+);
+
 export const myProfileSlice = createSlice({
     name: 'myProfile',
     initialState: {
@@ -64,5 +80,5 @@ export const myProfileSlice = createSlice({
 })
 
 export const { DELETE_MYPROFILE } = myProfileSlice.actions
-export { fetchMyProfile, editMyProfile }
+export { fetchMyProfile, editMyProfile, editEmailUserFirstLastName }
 export default myProfileSlice.reducer
