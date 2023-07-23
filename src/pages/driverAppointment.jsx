@@ -1,8 +1,10 @@
+import BookingComponent from "../components/bookingStudent/BookingStudent"
+
 export const DriverAppointment = () => {
 
 
 
     return (
-        <h1>Test</h1>
+        <BookingComponent></BookingComponent>
     )
   }

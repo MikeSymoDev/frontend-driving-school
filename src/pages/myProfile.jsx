@@ -9,10 +9,12 @@ import { BookingsTable } from '../components/myProfile/bookings/bookingsTable'
 import { BookingsNotAvailableForm } from '../components/myProfile/bookings/bookingsNotAvailableForm'
 import { VehiclesCreationForm } from '../components/myProfile/vehicles/vehiclesCreationForm'
 import { MyVehicles } from '../components/myProfile/vehicles/myVehicles'
+import { useNavigate } from 'react-router-dom'
 
 export default function MyProfile() {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const myProfileState = useSelector((store) => store.myProfile)
   const myProfile = myProfileState.data
 
@@ -90,12 +92,19 @@ export default function MyProfile() {
     // ... handle cancel action
   };
 
+  const navigateToAppointments = () => {
+    
+    navigate('/driverdetail/2/appointments/');
+    
+  }
+
 
   return (
     <>
         <div className='MyProfile-Container'>
           {myProfileState.ready &&
             <>
+            <button onClick={navigateToAppointments}></button>
               <h2>MY PROFILE</h2>
               <div className='Profile-Image'>
                 <img src={myProfile.profile_image} alt="Image description" />

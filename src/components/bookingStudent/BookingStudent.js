@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../bookingStudent/BookingStudent.scss";
 import "../../styles/_variables.scss";
-import { useDispatch } from "react-redux";
-import { fetchAppointmentsByDate } from "../../app/slices/bookingSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { bookAppointment, fetchAppointmentsByDate } from "../../app/slices/bookingSlice";
 
 const BookingComponent = () => {
+
+  const bookingState = useSelector((store) => store.bookings)
+
   const [selectedDate, setSelectedDate] = useState("");
   const [availableTimes, setAvailableTimes] = useState([]);
 
   const dispatch = useDispatch();
   const [date, setDate] = useState("");
   const [appointments, setAppointments] = useState([]);
+
+  useEffect(() => {
+    fetchAppointmentsByDateHandler(selectedDate)
+
+  }, [dispatch, bookingState.booked])
 
   const handleDateChange = (e) => {
     const selectedDate = e.target.value;
@@ -30,12 +38,29 @@ const BookingComponent = () => {
     }
   };
 
+  const formatTime = (timeString) => {
+    const time = new Date(`2000-01-01T${timeString}`);
+    return time.toLocaleTimeString("de", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
+
+  const compareAppointmentsByStartTime = (a, b) => {
+    const timeA = new Date(`2000-01-01T${a.start_time}`);
+    const timeB = new Date(`2000-01-01T${b.start_time}`);
+    return timeA - timeB;
+  };
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
   };
 
-  const handleTimeSelection = (selectedTime) => {
-    console.log("Selected Time:", selectedTime);
+  const handleBookAppointment = (appointmentId) => {
+
+    dispatch(bookAppointment(appointmentId))
+    setSelectedDate(date)
+    
   };
 
   return (
@@ -59,9 +84,13 @@ const BookingComponent = () => {
           style={{ width: "200px", height: "200px", borderRadius: "50%" }}
         /> */}
         {Array.isArray(appointments) &&
-          appointments.map((appointment) => (
+          // Sort the appointments array based on start_time
+          appointments
+            .slice() // Create a copy of the array to avoid mutating the original
+            .sort(compareAppointmentsByStartTime) // Sort the copied array
+            .map((appointment) => (
             <div key={appointment.id} className="time-card">
-              <h3>Start Slot: {appointment.start_time}</h3>
+              <h3>Start Slot: {formatTime(appointment.start_time)}</h3>
               {/* ////////
               {appointment.state === "NA" ? (
                 <h6>State: {"unavailable "}</h6>
@@ -78,15 +107,13 @@ const BookingComponent = () => {
               </h6>
               <h6>Email: {" " + appointment.instructor.email}</h6>
               <h6>Location:{" " + appointment.location}</h6>
-              {appointment.state === "NA" ? (
-                <p className="taken">BOOK</p>
-              ) : (
-                <button
-                  onClick={() => handleTimeSelection(appointment.start_time)}
+              {appointment.state === "NA" && <p className="taken">BOOK</p>}
+              {appointment.state === "B" && <p className="taken">BOOK</p>}
+              {appointment.state === "O" &&  <button
+                  onClick={() => handleBookAppointment(appointment.id)}
                 >
                   BOOK
-                </button>
-              )}
+                </button>}
             </div>
           ))}
       </div>
