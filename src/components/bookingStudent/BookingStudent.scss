@@ -1,0 +1,85 @@
+@import "../../styles/variables";
+@import "../../styles/breakpoints";
+
+.book {
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+.form {
+  width: 100%;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.datepicker {
+  font-size: 30px;
+  margin-right: 20px;
+}
+/* Styling for time cards and button */
+.time-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 300px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: large;
+}
+.button {
+  margin-top: 2rem;
+  background: $gradient;
+  border: $button-border;
+  padding: $buton-padding;
+  border-radius: $button-radius;
+  color: white;
+  font-weight: $button-weight;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+button {
+  margin-top: 2rem;
+  background: $gradient;
+  border: $button-border;
+  padding: $buton-padding;
+  border-radius: $button-radius;
+  color: white;
+  font-weight: $button-weight;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+/* Flex container for time cards */
+.time-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.time-card {
+  background: linear-gradient(to bottom, #ed9b1c, white);
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 50px;
+
+  h3 {
+    font-weight: bolder;
+  }
+  .taken {
+    margin-top: 2rem;
+    background: $gradient;
+    border: $button-border;
+    padding: $buton-padding;
+    border-radius: $button-radius;
+    color: white;
+    font-weight: $button-weight;
+    font-size: 1.25rem;
+  }
+}
