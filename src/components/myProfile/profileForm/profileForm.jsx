@@ -5,6 +5,7 @@ const ProfileForm = ({
     isEditMode,
     myProfile,
     drivingSchools,
+    email,
     username,
     firstname,
     lastname,
@@ -20,6 +21,7 @@ const ProfileForm = ({
     drivingSchool,
     created,
     updated,
+    setEmail,
     setUserName,
     setFirstName,
     setLastName,
@@ -85,6 +87,10 @@ const ProfileForm = ({
                 <form onSubmit={isEditMode ? saveProfileHandler : editProfileHandler} className='Edit-Profile-Form'>
                     <div className='My-Profile-Input-Container'>
                         <div className='MyProfile-Profile-Left' >
+                        <div className='Edit-Profile-Form-Element'>
+                                <label>Email:</label>
+                                <input type="text" className='Edit-Profile-Form-Input' placeholder="Email" required value={email} onChange={(e) => { setEmail(e.target.value) }} disabled={!isEditMode} />
+                            </div>
                             <div className='Edit-Profile-Form-Element'>
                                 <label>Username:</label>
                                 <input type="text" className='Edit-Profile-Form-Input' placeholder="Username" required value={username} onChange={(e) => { setUserName(e.target.value) }} disabled={!isEditMode} />

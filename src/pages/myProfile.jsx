@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './myProfile.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { editMyProfile, fetchMyProfile } from '../app/slices/myProfileSlice'
+import { editEmailUserFirstLastName, editMyProfile, fetchMyProfile } from '../app/slices/myProfileSlice'
 import { fetchDrivingSchools } from '../app/slices/drivingSchoolSlice'
 import ProfileForm from '../components/myProfile/profileForm/profileForm'
 import { BookingsCreationForm } from '../components/myProfile/bookings/bookingsCreationForm'
@@ -30,6 +30,7 @@ export default function MyProfile() {
 
   console.log(myProfile)
 
+  const [email, setEmail] = useState(myProfile?.user?.email || '');
   const [username, setUserName] = useState(myProfile?.user?.username || '');
   const [firstname, setFirstName] = useState(myProfile?.user?.first_name || '');
   const [lastname, setLastName] = useState(myProfile?.user?.last_name || '');
@@ -63,6 +64,7 @@ export default function MyProfile() {
 
 
     const editData = {
+    email: email,
     gender: gender,
     address: address,
     postal_code: postalCode,
@@ -75,6 +77,15 @@ export default function MyProfile() {
     driving_school: drivingSchool
   }
 
+  const editUserData = {
+
+    email: email,
+    username: username,
+    first_name: firstname,
+    last_name: lastname,
+
+  }
+
   const editProfileHandler = async (e) => {
     e.preventDefault();
     setIsEditMode(true); // Disable edit mode after form submission
@@ -85,6 +96,7 @@ export default function MyProfile() {
     e.preventDefault();
     setIsEditMode(false);
     dispatch(editMyProfile(editData))
+    dispatch(editEmailUserFirstLastName(editUserData))
   };
 
   const cancelHandler = () => {
@@ -139,6 +151,7 @@ export default function MyProfile() {
                     drivingSchools={drivingSchools}
                     created={created}
                     updated={updated}
+                    email={email}
                     username={username}
                     firstname={firstname}
                     lastname={lastname}
@@ -152,9 +165,10 @@ export default function MyProfile() {
                     hasLearnerPermit={hasLearnerPermit}
                     phone={phone}
                     drivingSchool={drivingSchool}
-                    setUsername={setUserName}
-                    setFirstname={setFirstName}
-                    setLastname={setLastName}
+                    setEmail={setEmail}
+                    setUserName={setUserName}
+                    setFirstName={setFirstName}
+                    setLastName={setLastName}
                     setGender={setGender}
                     setAddress={setAddress}
                     setPostalCode={setPostalCode}
