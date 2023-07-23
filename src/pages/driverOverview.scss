@@ -1,0 +1,60 @@
+@import '../styles/variables';
+
+.drivermainTitle {
+    display: flex;
+    flex-direction: column;
+    color:white;
+    align-items: center;    
+}
+
+.allDriverscontain {
+    margin: 0 auto;
+    width: 80%;
+    
+    input {
+        width:12em;
+        padding-left: 0.3em;
+        border-radius: 25px;
+        border: 1px;
+        height: 1.5em;
+        background-color:lightgrey;     
+        margin-left: 2.3em;
+    }
+}
+
+    .zip {
+        margin: 0 auto;
+        display: flex;
+        padding-top:4em;
+        width:19em; 
+    }
+
+  .driverPairContainer {
+    margin-top: 4em ;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .driverPair {
+    display: flex;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 2px;
+  }
+  
+  .driverImg img{
+    width: 200px;
+    margin-top: 2.2em;
+    height:fit-content;
+    padding-right: 0.5em;
+    object-fit:cover;
+    border-radius:60%; 
+  }
+
+  .driverInfo {
+    width: fit-content;
+    padding: 0.5em; 
+    margin-bottom: 20%;
+  }
+  
+  
