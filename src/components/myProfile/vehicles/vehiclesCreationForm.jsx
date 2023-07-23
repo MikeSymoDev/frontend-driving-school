@@ -78,11 +78,11 @@ export const VehiclesCreationForm = () => {
                             <div className="MyProfile-Vehicle-Left">
                                 <div className="Create-Vehicle-Form-Element">
                                     <label>Make:</label>
-                                    <input className="Create-Vehicle-Form-Input" type="text" required onChange={(e) => { setMake(e.target.value); }} />
+                                    <input className="Create-Vehicle-Form-Input" type="text" value={make} required onChange={(e) => { setMake(e.target.value); }} />
                                 </div>
                                 <div className="Create-Vehicle-Form-Element">
                                     <label>Model:</label>
-                                    <input className="Create-Vehicle-Form-Input" type="text" required onChange={(e) => { setModel(e.target.value); }} />
+                                    <input className="Create-Vehicle-Form-Input" type="text" value={model} required onChange={(e) => { setModel(e.target.value); }} />
                                 </div>
                                 <div className="Create-Vehicle-Form-Element">
                                     <label>Year:</label>

@@ -11,7 +11,7 @@ export default function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const [emailLogin, setEmailLogin] = useState('sven@student.ch')
+  const [emailLogin, setEmailLogin] = useState('harryhirsch@wowds.com')
   const [passwordLogin, setPasswordLogin] = useState('Secure')
 
   const loginState = useSelector((store) => store.currentUser)
