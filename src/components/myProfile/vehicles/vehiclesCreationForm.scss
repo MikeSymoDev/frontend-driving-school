@@ -2,7 +2,7 @@
 
 .MyProfile-Vehicles {
 
-    margin-top: 2rem;
+    margin-top: 3rem;
 
 
     button {
@@ -19,6 +19,7 @@
 
     .Create-Vehicle-Div {
 
+        margin-top: 2rem;
         display: flex;
         flex-direction: row;
         //background-color: red;
@@ -92,7 +93,7 @@
         }
 
         .submit {
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             background: $gradient;
             border: $button-border;
             padding: $buton-padding;
