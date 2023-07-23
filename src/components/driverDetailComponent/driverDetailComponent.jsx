@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axiosInstance from '../../axios';
 import { useParams } from 'react-router-dom';
 import './driverDetailComponent.scss';
+import { useNavigate } from 'react-router-dom'
 
 export default function DriverDetail() {
   const [driver, setDriver] = useState(null);
   const { id } = useParams();
+  const navigate = useNavigate()
 
   const getDriverDetail = async () => {
     try {
@@ -25,6 +27,12 @@ export default function DriverDetail() {
     return <p>Loading driver detail...</p>;
   }
 
+    const navigateToAppointments = () => {
+    
+    navigate(`/driverdetail/${id}/appointments/`);
+    
+  }
+
   return (
 
     <>
@@ -40,7 +48,8 @@ export default function DriverDetail() {
               <p>E-Mail: <a href={`mailto:${driver.email}`}>{driver.email}</a></p>
                <p>Phone: {driver.phone}</p>
                <p>Based in: {driver.location_city}</p>
-
+            
+             <button className='bookbutton' onClick={navigateToAppointments}>BOOK ME</button>
              </div>
 
       
