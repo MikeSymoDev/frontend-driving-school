@@ -3,7 +3,7 @@
 
 .book {
   text-align: center;
-  padding-bottom: 100px;
+  padding-bottom: 3rem;
 }
 
 .form {
@@ -11,11 +11,26 @@
   padding: 20px;
   font-size: 30px;
   text-align: center;
+  margin-bottom: 3rem;
+}
+
+.label{
+  font-size: 1rem;
+  margin-right: 1rem;
 }
 
 .datepicker {
-  font-size: 30px;
   margin-right: 20px;
+  height: 2.1rem;
+  width: 17rem;
+  border: 1px solid black;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+  border-radius: 0.5rem;
+
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Oxygen',
+              'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+              sans-serif;
 }
 /* Styling for time cards and button */
 .time-card {
@@ -29,8 +44,11 @@
   align-items: center;
   text-align: center;
   font-size: large;
-}
-.button {
+
+    &.open {
+    background: linear-gradient(to bottom, #006400, white);
+
+    button {
   margin-top: 2rem;
   background: $gradient;
   border: $button-border;
@@ -38,9 +56,44 @@
   border-radius: $button-radius;
   color: white;
   font-weight: $button-weight;
-  font-size: 0.8rem;
+  font-size: 1.25rem;
   cursor: pointer;
 }
+  }
+
+  &.booked {
+    background: linear-gradient(to bottom, #CC0000, white);
+
+    button {
+      margin-top: 2rem;
+      background: grey;
+      border: $button-border;
+      padding: $buton-padding;
+      border-radius: $button-radius;
+      color: white;
+      font-weight: $button-weight;
+      font-size: 1.25rem;
+      cursor: not-allowed;
+    }
+  }
+
+  &.not-available {
+    background: linear-gradient(to bottom, grey, white);
+
+    button {
+      margin-top: 2rem;
+      background: grey;
+      border: $button-border;
+      padding: $buton-padding;
+      border-radius: $button-radius;
+      color: white;
+      font-weight: $button-weight;
+      font-size: 1.25rem;
+      cursor: not-allowed;
+    }
+  }
+}
+
 button {
   margin-top: 2rem;
   background: $gradient;
@@ -61,7 +114,7 @@ button {
 }
 
 .time-card {
-  background: linear-gradient(to bottom, #ed9b1c, white);
+  background-color: linear-gradient(to bottom, grey, white);
   width: 400px;
   height: 400px;
   display: flex;
@@ -69,12 +122,16 @@ button {
   justify-content: space-between;
   margin-bottom: 50px;
 
+  
+
+
+
   h3 {
     font-weight: bolder;
   }
   .taken {
     margin-top: 2rem;
-    background-color: gray;
+    background: $gradient;
     border: $button-border;
     padding: $buton-padding;
     border-radius: $button-radius;
@@ -87,9 +144,10 @@ button {
 .No-Appoinments{
 
   
-  margin-left: 48rem;
+  margin-left: 35rem;
   margin-top: 5rem;
   margin-bottom: 5rem;
+  color: red
   
 
 }
