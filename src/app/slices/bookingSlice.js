@@ -76,6 +76,23 @@ const bookAppointment = createAsyncThunk(
     }
 )
 
+const cancelAppointment = createAsyncThunk(
+    "/book/appointment/",
+    async (bookingId, { getState }) => {
+      const { currentUser } = getState();
+  
+      axiosInstance.defaults.headers.common = {
+        Authorization: `Bearer ${currentUser.token}`,
+      };
+  
+      const response = await axiosInstance.patch(
+        `/appointment/cancellation/${bookingId}`
+      );
+      console.log(response.data)
+      return response.data;
+    }
+)
+
 const fetchMyAppointmentsStudent = createAsyncThunk (
     "/appointment/me/student/", async (_, { getState }) => {
         const { currentUser } = getState();
@@ -108,6 +125,7 @@ export const bookingSlice = createSlice({
         loading: false,
         ready: false,
         booked: false,
+        cancelled: false,
     },
     reducers: {
         setInstructorAppointments: (state, { payload }) => {
@@ -164,13 +182,10 @@ export const bookingSlice = createSlice({
 
         },
 
-        [fetchMyAppointmentsStudent.fulfilled]: (state, action) => {
-            state.bookingsAsStudent = true
-
-        },
 
         [fetchMyAppointmentsStudent.pending]: (state, action) => {
             state.bookingsAsInstructor = true
+            state.cancelled = false;
 
         },
 
@@ -188,11 +203,15 @@ export const bookingSlice = createSlice({
 
         [bookAppointment.fulfilled]: (state, action) => {
             state.booked = true
+        },
+
+        [cancelAppointment.fulfilled]: (state, action) => {
+            state.cancelled = true
         }
 
 
     }
 })
 
-export { createNewAppointments, setAppointmentsNotAvailable, fetchMyAppointmentsInstructor, fetchAppointmentsByDate, bookAppointment, fetchMyAppointmentsStudent }
+export { createNewAppointments, setAppointmentsNotAvailable, fetchMyAppointmentsInstructor, fetchAppointmentsByDate, bookAppointment, fetchMyAppointmentsStudent, cancelAppointment }
 export default bookingSlice.reducer

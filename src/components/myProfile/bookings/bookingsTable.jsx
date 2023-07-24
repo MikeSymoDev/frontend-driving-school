@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMyAppointmentsInstructor, fetchMyAppointmentsStudent, setAppointmentsNotAvailable } from "../../../app/slices/bookingSlice";
+import { cancelAppointment, fetchMyAppointmentsInstructor, fetchMyAppointmentsStudent, setAppointmentsNotAvailable } from "../../../app/slices/bookingSlice";
 import "./bookingsTable.scss"
 import Spinner from "../../spinner/spinner";
 
@@ -22,7 +22,7 @@ export const BookingsTable = () => {
 
   useEffect(() => {
     dispatch(fetchMyAppointmentsStudent())
-  }, [dispatch])
+  }, [dispatch, bookingsState.cancelled])
 
 
 
@@ -122,6 +122,10 @@ export const BookingsTable = () => {
     });
   });
 
+  const handleBookingCancellation = (appointmentId) => {
+    dispatch(cancelAppointment(appointmentId));
+  }
+
   return (
     <table className="bookings-table">
       <thead>
@@ -194,7 +198,8 @@ export const BookingsTable = () => {
                 <td>{row.student?.email}</td>
                 <td>{row.instructor?.email}</td> {/* Use optional chaining operator */}
                 <td>{row.notes}</td>
-                <td>{mapStateToLabel(row.state)}</td>
+                {currentUser.type == "I"&& <td>{mapStateToLabel(row.state)}</td>}
+                {currentUser.type == "S"&& <td>{mapStateToLabel(row.state)} <button className="small-button" onClick={() => handleBookingCancellation(row.id)}>Cancel</button></td>}
               </tr>
             ))}
           </>
