@@ -3,27 +3,23 @@ import LogoWhite from '../../assets/logos/logo_dh_whitenew.png';
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 import { DELETE_USER } from '../../app/slices/currentUserSlice';
 import './header.scss';
 import { DELETE_MYPROFILE } from '../../app/slices/myProfileSlice';
 
 export default function Header() {
+  const user = useSelector((store) => store.currentUser);
+  const myProfileState = useSelector((store) => store.myProfile);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-const user = useSelector((store) => store.currentUser);
-const myProfileState = useSelector((store) => store.myProfile)
-const navigate = useNavigate();
-const dispatch = useDispatch();
-
-
-   const handleLogout = () => {
+  const handleLogout = () => {
     dispatch(DELETE_USER());
-    dispatch(DELETE_MYPROFILE())
+    dispatch(DELETE_MYPROFILE());
     localStorage.clear();
     navigate('/login');
-   }
-
-
+  };
 
   return (
     <>
@@ -50,14 +46,21 @@ const dispatch = useDispatch();
             <NavLink className="navlink" to="myprofile">
               MY PROFILE
             </NavLink>
-            <NavLink className="navlink" to="login">
-              LOGIN
-            </NavLink>
-            <NavLink className="navlink" to="signup">
-              SIGN UP
-            </NavLink>
-            {user.token && <button className='logout' onClick={handleLogout}>LOGOUT</button>}
-  
+            {!user.token && (
+              <NavLink className="navlink" to="login">
+                LOGIN
+              </NavLink>
+            )}
+            {!user.token && (
+              <NavLink className="navlink" to="signup">
+                SIGN UP
+              </NavLink>
+            )}
+            {user.token && (
+              <button className="logout" onClick={handleLogout}>
+                LOGOUT
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -65,5 +68,3 @@ const dispatch = useDispatch();
     </>
   );
 }
-
-
