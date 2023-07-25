@@ -1,60 +1,100 @@
 @import '../styles/variables';
 
-.drivermainTitle {
-    display: flex;
-    flex-direction: column;
-    color:white;
-    align-items: center;    
-}
-
-.allDriverscontain {
-    margin: 0 auto;
-    width: 80%;
-    
-    input {
-        width:12em;
-        padding-left: 0.3em;
-        border-radius: 25px;
-        border: 1px;
-        height: 1.5em;
-        background-color:lightgrey;     
-        margin-left: 2.3em;
-    }
-}
-
-    .zip {
-        margin: 0 auto;
+    .drivermainTitle {
         display: flex;
-        padding-top:4em;
-        width:19em; 
+        flex-direction: column;
+        color:white;
+        align-items: center;    
     }
 
-  .driverPairContainer {
-    margin-top: 4em ;
-    display: flex;
-    flex-wrap: wrap;
-  }
+    .allDriverscontain {
+        margin: 0 auto;
+        width: 80%;
+    }
 
-  .driverPair {
-    display: flex;
-    width: 50%;
-    box-sizing: border-box;
-    padding: 2px;
-  }
-  
-  .driverImg img{
-    width: 200px;
-    margin-top: 2.2em;
-    height:fit-content;
-    padding-right: 0.5em;
-    object-fit:cover;
-    border-radius:60%; 
-  }
+        .zipold {
+            margin: 0 auto;
+            display: flex;
+            padding-top:4em;
+            width:19em; 
+        }
 
-  .driverInfo {
-    width: fit-content;
-    padding: 0.5em; 
-    margin-bottom: 20%;
-  }
-  
-  
+     
+ 
+
+
+        .zip {
+            display: flex;
+            width:100%;
+            justify-content: center;
+            align-items: center;
+            margin-right:0em;
+            margin-top: 4rem;
+            /*background-color: aqua;*/
+            input {
+                width:14em;
+                height: 1.9em;
+                padding-top: 0.3em;
+                padding-left: 0.3em;
+                border-radius: 10px;
+                border-width: 1px;
+                border-color: black;
+                background-color:white;     
+                margin-left: 2em;
+            }
+        }
+       
+     
+        .driverPairContainer {
+            margin-top: 4em ;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+    .driverPair {
+        display: flex;
+        width: 50%;
+        box-sizing: border-box;
+        padding: 2px;
+    }
+    
+    .driverImg img{
+        width: 200px;
+        margin-top: 2.2em;
+        height:fit-content;
+        padding-right: 0.5em;
+        object-fit:cover;
+        border-radius:60%; 
+    }
+
+    .driverInfo {
+        width: fit-content;
+        padding: 0.5em; 
+        margin-bottom: 20%;
+        
+        h3 {
+        margin-bottom: 0.9rem;
+        }
+    }
+    
+    .detailsbutton {
+        button {
+        background: $gradient;
+        border: $button-border;
+        padding: $buton-padding;
+        border-radius: $button-radius;
+        font-weight: $button-weight;
+        cursor: pointer;
+    }
+    }
+
+    .errormsg {
+        text-align: center;
+        font-size: 18px; 
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding-bottom: 2em;
+      }
