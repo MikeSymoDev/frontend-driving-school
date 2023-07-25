@@ -77,7 +77,7 @@ const bookAppointment = createAsyncThunk(
 )
 
 const cancelAppointment = createAsyncThunk(
-    "/book/appointment/",
+    "/cancel/appointment/",
     async (bookingId, { getState }) => {
       const { currentUser } = getState();
   
@@ -165,6 +165,8 @@ export const bookingSlice = createSlice({
             state.instructorBookings = action.payload
             state.loading = false
             state.ready = true;
+            state.notAvailable = false
+            //state.created = false
 
         },
 
@@ -173,6 +175,7 @@ export const bookingSlice = createSlice({
             state.studentBookings = action.payload
             state.loading = false
             state.ready = true;
+            state.notAvailable = false
 
         },
 
