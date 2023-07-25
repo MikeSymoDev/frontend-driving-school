@@ -12,7 +12,7 @@ export default function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const [emailLogin, setEmailLogin] = useState('sven2@student.ch')
+  const [emailLogin, setEmailLogin] = useState('instructor@demo.ch')
   const [passwordLogin, setPasswordLogin] = useState('Secure')
   const [loginMessage, setLoginMessage] = useState("");
 
@@ -62,8 +62,11 @@ export default function Login() {
 
   return (
     <>
+    <div className="heroimagedetail">
+        <h2 className="herocontentdetail">LOGIN TO DRIVE HUB</h2>
+      </div>
     <div className="SignUp-Form-Container">
-        <h2>Login to BOOK. LEARN. DRIVE.</h2>
+        {/* <h2>Login to BOOK. LEARN. DRIVE.</h2> */}
         <p>Please enter your Email and Password</p>
         {error && <p className='error-message'>Error: {error.detail}</p>}
         <div className='Sign-Setup-Login-Form-Div'>

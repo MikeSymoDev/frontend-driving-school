@@ -11,6 +11,9 @@ export default function SignUpStart() {
   }
   return (
     <>
+    <div className="heroimagedetail">
+        <h2 className="herocontentdetail">SIGN UP</h2>
+      </div>
         <div className="SignUp-Start-Container"> 
           <h2>What Type are you?</h2>
           <p>
