@@ -80,8 +80,8 @@ const ProfileForm = ({
 
     return (
         <div className='MyProfile-Profile'>
-            <h6>Created: {createdFormatted}</h6>
-            <h6>Updated: {updatedFormatted}</h6>
+            {/* <h6>Created: {createdFormatted}</h6>
+            <h6>Updated: {updatedFormatted}</h6> */}
             <div className='Edit-Profile-Div'>
 
                 <form onSubmit={isEditMode ? saveProfileHandler : editProfileHandler} className='Edit-Profile-Form'>
