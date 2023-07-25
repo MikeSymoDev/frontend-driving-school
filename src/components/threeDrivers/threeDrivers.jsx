@@ -31,11 +31,9 @@ export default function ThreeDrivers() {
         <div className="drivertitle">
           <h2>SOME OF OUR DRIVERS</h2>
           <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet.
+            Ready to get some driving skills? We got you covered. On Drive Hub 
+            only the best and most reliable driving instructors offer their services.
+            Find the driving instructor that fits your agenda right here on Drive Hub.
           </p>
         </div>
 
