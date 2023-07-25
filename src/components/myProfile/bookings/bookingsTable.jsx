@@ -15,7 +15,7 @@ export const BookingsTable = () => {
 
   useEffect(() => {
     dispatch(fetchMyAppointmentsInstructor());
-  }, [dispatch, bookingsChanged]);
+  }, [dispatch, bookingsChanged, bookingsState.created, bookingsState.notAvailable]);
   console.log(instructorBookings);
 
   console.log(currentUser.type)
