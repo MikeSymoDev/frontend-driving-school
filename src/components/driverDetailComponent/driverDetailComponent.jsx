@@ -68,7 +68,7 @@ export default function DriverDetail() {
         <p>Year: {vehicle.year}</p>
         <p>Transmission: {vehicle.transmission}</p>
         <br />
-        <p>Adress:</p>
+        <p>Address:</p>
         <p>{driver.driving_school.address}</p>
         <p>{driver.driving_school.postal_code} {driver.driving_school.location_city}  </p>
         <p>{driver.driving_school.country}</p>
