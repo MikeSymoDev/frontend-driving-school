@@ -26,9 +26,13 @@
             }
 
             .MyVehicle-Object-Image {
+
+                width: 100%;
+                height: 25rem;
+                //background-color: red;
                 img {
-                    width: 100%;
-                    height: 20rem;
+                    width: 80%;
+                    height: auto;
                 }
 
 
@@ -41,8 +45,8 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                width: 100%;
-                height: 20rem;
+                width: 80%;
+                height: 24.1rem;
                 border: #440381 1px dotted;
 
                 p {
