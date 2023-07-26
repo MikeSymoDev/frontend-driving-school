@@ -31,7 +31,7 @@ export default function ThreeDrivers() {
         <div className="drivertitle">
           <h2>SOME OF OUR DRIVERS</h2>
           <p>
-            Ready to get some driving skills? We got you covered. On Drive Hub 
+            Ready to get some driving skills? We got you covered. On Drive Hub, 
             only the best and most reliable driving instructors offer their services.
             Find the driving instructor that fits your agenda right here on Drive Hub.
           </p>

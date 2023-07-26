@@ -15,10 +15,10 @@ export default function SignUpStart() {
         <h2 className="herocontentdetail">SIGN UP</h2>
       </div>
         <div className="SignUp-Start-Container"> 
-          <h2>What Type are you?</h2>
+          <h2>What type are you?</h2>
           <p>
             It depends for what reasons you are here: <br></br>
-            Would you like to learn or would you like to teach?
+            Do you want to learn or teach?
           </p>
           <div className='Choose-Type'>
             <button onClick={() => handleUserType('S')}>STUDENT</button>
