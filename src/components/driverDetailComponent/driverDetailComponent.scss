@@ -39,14 +39,3 @@ h3 {
 .carimage {
   display: flex;
 }
-
-.bookbutton {
-   button {
-    background: $gradient;
-    border: $button-border;
-    padding: $buton-padding;
-    border-radius: $button-radius;
-    font-weight: $button-weight;
-    cursor: pointer;
-  }
-}

@@ -30,7 +30,7 @@ export default function DriverOverview() {
   return (
     <>
       <div className="heroimagedetail">
-        <h2 className="herocontentdetail">Drivers Page</h2>
+        <h2 className="herocontentdetail">Drive Hub Instructors</h2>
       </div>
       <div className="allDriverscontain">
         <div className="zip">
@@ -65,8 +65,7 @@ export default function DriverOverview() {
                   <p>Email: {driver.email || 'N/A'}</p>
                   <p>Country: {driver.country || 'N/A'}</p>
                   <p>
-                    Address: {driver.address}, {driver.postal_code}
-                    {driver.location_city}
+                    Address: {driver.address}, {driver.postal_code} {driver.location_city}
                   </p>
                   {/* driver profile link */}
                   <Link to={`/driverdetail/${driver.id}`} onClick={backToTop}>
