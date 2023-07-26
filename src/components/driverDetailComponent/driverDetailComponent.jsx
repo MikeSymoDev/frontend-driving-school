@@ -76,7 +76,7 @@ export default function DriverDetail() {
       
       <div className='carimage'>
         {vehicle.vehicle_image.map((car) => (
-          <img key={car.id} src={car.image} alt="Vehicle" style={{ width: '19rem', height: '19rem', borderRadius: '50%' }} />
+          <img key={car.id} src={car.image} alt="Vehicle" style={{ width: '19rem', height: '19rem', borderRadius: '50%', }} />
         ))}
       </div>
     </div>
