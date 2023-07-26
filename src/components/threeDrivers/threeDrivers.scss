@@ -1,6 +1,7 @@
 .threedrivers {
   display: flex;
   flex-direction: column;
+  
 }
 
 
@@ -32,6 +33,10 @@
   padding-left: 4rem;
   padding-right: 4rem;
   padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
   h3 {
     margin-top: 2rem;
