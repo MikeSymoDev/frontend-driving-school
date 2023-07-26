@@ -43,7 +43,7 @@ export default function DriverDetail() {
             
             <div className='drivertext'>
               
-              <p>About: "{driver.about}"</p>
+              <p>About: {driver.about}</p>
               <p>Gender: {driver.gender}</p>
               <p>E-Mail: <a href={`mailto:${driver.email}`}>{driver.email}</a></p>
                <p>Phone: {driver.phone}</p>
