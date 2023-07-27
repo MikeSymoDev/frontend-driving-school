@@ -14,7 +14,7 @@
   margin-bottom: 3rem;
 }
 
-.label{
+.label {
   font-size: 1rem;
   margin-right: 1rem;
 }
@@ -29,9 +29,10 @@
   border-radius: 0.5rem;
 
   font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Oxygen',
-              'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-              sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
+
 /* Styling for time cards and button */
 .time-card {
   border: 1px solid #ccc;
@@ -44,28 +45,47 @@
   align-items: center;
   text-align: center;
   font-size: large;
+  // background-color: linear-gradient(to bottom, grey, white);
+  // border: 20px solid red;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-bottom: 50px;
 
-    &.open {
-    background: linear-gradient(to bottom, #006400, white);
+  &.open {
+    background-color: white;
+    border: 4px green solid !important;
 
     button {
-  margin-top: 2rem;
-  background: $gradient;
-  border: $button-border;
-  padding: $buton-padding;
-  border-radius: $button-radius;
-  color: white;
-  font-weight: $button-weight;
-  font-size: 1.25rem;
-  cursor: pointer;
-}
+      margin-top: 1rem;
+      background: $gradient;
+      border: $button-border;
+      padding: $buton-padding;
+      border-radius: $button-radius;
+      color: white;
+      font-weight: $button-weight;
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    .state {
+      background-color: green;
+      color: white;
+      font-weight: 800;
+      padding: 0.5rem;
+    }
   }
 
   &.booked {
-    background: linear-gradient(to bottom, #CC0000, white);
+    background-color: white;
+    border: 4px red solid !important;
 
     button {
-      margin-top: 2rem;
+      margin-top: 1rem;
       background: grey;
       border: $button-border;
       padding: $buton-padding;
@@ -75,13 +95,21 @@
       font-size: 1.25rem;
       cursor: not-allowed;
     }
+
+    .state {
+      background-color:red;
+      color: white;
+      font-weight: 800;
+      padding: 0.5rem;
+    }
   }
 
   &.not-available {
-    background: linear-gradient(to bottom, grey, white);
+    background-color: white;
+    border: 4px grey solid !important;
 
     button {
-      margin-top: 2rem;
+      margin-top: 1rem;
       background: grey;
       border: $button-border;
       padding: $buton-padding;
@@ -90,6 +118,13 @@
       font-weight: $button-weight;
       font-size: 1.25rem;
       cursor: not-allowed;
+    }
+
+    .state {
+      background-color: grey;
+      color: white;
+      font-weight: 800;
+      padding: 0.5rem;
     }
   }
 }
@@ -114,21 +149,23 @@ button {
 }
 
 .time-card {
-  background-color: linear-gradient(to bottom, grey, white);
-  width: 400px;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 50px;
+  // background-color: linear-gradient(to bottom, grey, white);
+  // border: 20px solid red;
+  // width: 400px;
+  // height: 400px;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  // margin-bottom: 50px;
 
-  
+
 
 
 
   h3 {
     font-weight: bolder;
   }
+
   .taken {
     margin-top: 2rem;
     background: $gradient;
@@ -141,13 +178,11 @@ button {
   }
 }
 
-.No-Appoinments{
+.No-Appoinments {
 
-  
+
   margin-left: 35rem;
   margin-top: 5rem;
   margin-bottom: 5rem;
   color: red
-  
-
 }

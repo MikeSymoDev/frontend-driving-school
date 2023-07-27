@@ -118,7 +118,9 @@ const BookingComponent = () => {
               <div key={appointment.id} className={`time-card ${mapStateToClass(appointment.state)}`}>
                 <h3>Start Slot: {formatTime(appointment.start_time)}</h3>
                 <h6>Date: {formatDate(appointment.date)}</h6>
-                <h6>State: {mapStateToLabel(appointment.state)}</h6>
+                <div className="state-div">
+                <h6 className="state">{mapStateToLabel(appointment.state)}</h6>
+                </div>
 
                 <h6>
                   Instructor:{" "}
