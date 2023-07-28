@@ -12,7 +12,7 @@ export default function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const [emailLogin, setEmailLogin] = useState('instructor@demo.ch')
+  const [emailLogin, setEmailLogin] = useState('ruben@demo.ch')
   const [passwordLogin, setPasswordLogin] = useState('Secure')
   const [loginMessage, setLoginMessage] = useState("");
 
